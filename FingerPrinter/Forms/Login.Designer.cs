@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            user_name = new TextBox();
+            tb_user_name = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
+            tb_password = new TextBox();
             button1 = new Button();
             linkLabel1 = new LinkLabel();
             linkLabel2 = new LinkLabel();
@@ -53,12 +53,12 @@
             label1.ForeColor = Color.FromArgb(253, 110, 33);
             label1.Name = "label1";
             // 
-            // user_name
+            // tb_user_name
             // 
-            user_name.BorderStyle = BorderStyle.None;
-            resources.ApplyResources(user_name, "user_name");
-            user_name.Name = "user_name";
-            user_name.TextChanged += textBox1_TextChanged;
+            tb_user_name.BorderStyle = BorderStyle.None;
+            resources.ApplyResources(tb_user_name, "tb_user_name");
+            tb_user_name.Name = "tb_user_name";
+            tb_user_name.TextChanged += textBox1_TextChanged;
             // 
             // label2
             // 
@@ -70,12 +70,12 @@
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
             // 
-            // textBox1
+            // tb_password
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            resources.ApplyResources(textBox1, "textBox1");
-            textBox1.Name = "textBox1";
-            textBox1.TextChanged += textBox1_TextChanged_1;
+            tb_password.BorderStyle = BorderStyle.None;
+            resources.ApplyResources(tb_password, "tb_password");
+            tb_password.Name = "tb_password";
+            tb_password.TextChanged += textBox1_TextChanged_1;
             // 
             // button1
             // 
@@ -84,6 +84,7 @@
             resources.ApplyResources(button1, "button1");
             button1.Name = "button1";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // linkLabel1
             // 
@@ -107,9 +108,9 @@
             Controls.Add(linkLabel1);
             Controls.Add(button1);
             Controls.Add(label3);
-            Controls.Add(textBox1);
+            Controls.Add(tb_password);
             Controls.Add(label2);
-            Controls.Add(user_name);
+            Controls.Add(tb_user_name);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -123,10 +124,10 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private TextBox user_name;
+        private TextBox tb_user_name;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox tb_password;
         private Button button1;
         private LinkLabel linkLabel1;
         private LinkLabel linkLabel2;

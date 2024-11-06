@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FingerPrinter.Forms
 {
-    public partial class Dashboard : Form
+    public partial class Setting : Form
     {
-        public Dashboard()
+        public Setting()
         {
             InitializeComponent();
         }
