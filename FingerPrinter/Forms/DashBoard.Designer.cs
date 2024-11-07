@@ -54,23 +54,23 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1074, 196);
+            panel1.Size = new Size(1074, 222);
             panel1.TabIndex = 0;
             // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(174, 214, 241);
             panel3.Controls.Add(monthCalendar1);
-            panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 0);
+            panel3.Location = new Point(22, 12);
             panel3.Name = "panel3";
+            panel3.Padding = new Padding(5, 5, 0, 0);
             panel3.Size = new Size(315, 196);
             panel3.TabIndex = 1;
             // 
             // monthCalendar1
             // 
             monthCalendar1.BackColor = Color.FromArgb(174, 214, 241);
-            monthCalendar1.Location = new Point(34, 18);
+            monthCalendar1.Location = new Point(22, 18);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 0;
             monthCalendar1.TitleForeColor = Color.FromArgb(174, 214, 241);
@@ -81,8 +81,7 @@
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(706, 0);
+            panel2.Location = new Point(685, 12);
             panel2.Name = "panel2";
             panel2.Size = new Size(368, 196);
             panel2.TabIndex = 0;
@@ -100,7 +99,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(21, 55);
+            label1.Location = new Point(22, 61);
             label1.Name = "label1";
             label1.Size = new Size(128, 22);
             label1.TabIndex = 1;
@@ -124,14 +123,14 @@
             chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new Point(34, 226);
+            chart1.Location = new Point(22, 228);
             chart1.Name = "chart1";
             chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart1.Series.Add(series1);
-            chart1.Size = new Size(1015, 425);
+            chart1.Size = new Size(1031, 417);
             chart1.TabIndex = 1;
             chart1.Text = "chart1";
             // 

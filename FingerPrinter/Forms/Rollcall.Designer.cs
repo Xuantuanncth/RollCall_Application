@@ -36,25 +36,24 @@
             label2 = new Label();
             btn_addInfor = new Button();
             btn_setting = new Button();
-            button6 = new Button();
-            button5 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btn_report = new Button();
+            btn_timeoff = new Button();
+            btn_timesheet = new Button();
+            btn_dashboard = new Button();
             button2 = new Button();
             button1 = new Button();
             label1 = new Label();
             panel2 = new Panel();
-            label5 = new Label();
-            pictureBox1 = new PictureBox();
-            button8 = new Button();
-            label3 = new Label();
+            text_status = new Label();
+            pb_status = new PictureBox();
+            lable_Tag = new Label();
             btn_login = new Button();
             main_panel = new Panel();
             label_notification = new Label();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pb_status).BeginInit();
             main_panel.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,10 +77,10 @@
             panel4.Controls.Add(label2);
             panel4.Controls.Add(btn_addInfor);
             panel4.Controls.Add(btn_setting);
-            panel4.Controls.Add(button6);
-            panel4.Controls.Add(button5);
-            panel4.Controls.Add(button3);
-            panel4.Controls.Add(button4);
+            panel4.Controls.Add(btn_report);
+            panel4.Controls.Add(btn_timeoff);
+            panel4.Controls.Add(btn_timesheet);
+            panel4.Controls.Add(btn_dashboard);
             panel4.Dock = DockStyle.Left;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
@@ -148,61 +147,62 @@
             btn_setting.UseVisualStyleBackColor = true;
             btn_setting.Click += btn_setting_Click;
             // 
-            // button6
+            // btn_report
             // 
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.Location = new Point(0, 349);
-            button6.Name = "button6";
-            button6.Size = new Size(206, 56);
-            button6.TabIndex = 4;
-            button6.Text = "   Report";
-            button6.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button6.UseVisualStyleBackColor = true;
+            btn_report.FlatAppearance.BorderSize = 0;
+            btn_report.FlatStyle = FlatStyle.Flat;
+            btn_report.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_report.Image = (Image)resources.GetObject("btn_report.Image");
+            btn_report.Location = new Point(0, 349);
+            btn_report.Name = "btn_report";
+            btn_report.Size = new Size(206, 56);
+            btn_report.TabIndex = 4;
+            btn_report.Text = "   Report";
+            btn_report.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_report.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btn_timeoff
             // 
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(0, 287);
-            button5.Name = "button5";
-            button5.Size = new Size(206, 56);
-            button5.TabIndex = 3;
-            button5.Text = "   Time Off";
-            button5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button5.UseVisualStyleBackColor = true;
+            btn_timeoff.FlatAppearance.BorderSize = 0;
+            btn_timeoff.FlatStyle = FlatStyle.Flat;
+            btn_timeoff.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_timeoff.Image = (Image)resources.GetObject("btn_timeoff.Image");
+            btn_timeoff.Location = new Point(0, 287);
+            btn_timeoff.Name = "btn_timeoff";
+            btn_timeoff.Size = new Size(206, 56);
+            btn_timeoff.TabIndex = 3;
+            btn_timeoff.Text = "   Time Off";
+            btn_timeoff.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_timeoff.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btn_timesheet
             // 
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(0, 225);
-            button3.Name = "button3";
-            button3.Size = new Size(206, 56);
-            button3.TabIndex = 2;
-            button3.Text = "   TimeSheet";
-            button3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button3.UseVisualStyleBackColor = true;
+            btn_timesheet.FlatAppearance.BorderSize = 0;
+            btn_timesheet.FlatStyle = FlatStyle.Flat;
+            btn_timesheet.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_timesheet.Image = (Image)resources.GetObject("btn_timesheet.Image");
+            btn_timesheet.Location = new Point(0, 225);
+            btn_timesheet.Name = "btn_timesheet";
+            btn_timesheet.Size = new Size(206, 56);
+            btn_timesheet.TabIndex = 2;
+            btn_timesheet.Text = "   TimeSheet";
+            btn_timesheet.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_timesheet.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_dashboard
             // 
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(0, 101);
-            button4.Name = "button4";
-            button4.Size = new Size(206, 56);
-            button4.TabIndex = 1;
-            button4.Text = "   DashBoard";
-            button4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button4.UseVisualStyleBackColor = true;
+            btn_dashboard.FlatAppearance.BorderSize = 0;
+            btn_dashboard.FlatStyle = FlatStyle.Flat;
+            btn_dashboard.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_dashboard.Image = (Image)resources.GetObject("btn_dashboard.Image");
+            btn_dashboard.Location = new Point(0, 101);
+            btn_dashboard.Name = "btn_dashboard";
+            btn_dashboard.Size = new Size(206, 56);
+            btn_dashboard.TabIndex = 1;
+            btn_dashboard.Text = "   DashBoard";
+            btn_dashboard.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btn_dashboard.UseVisualStyleBackColor = true;
+            btn_dashboard.Click += btn_dashboard_Click;
             // 
             // button2
             // 
@@ -247,10 +247,9 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(244, 246, 250);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(button8);
-            panel2.Controls.Add(label3);
+            panel2.Controls.Add(text_status);
+            panel2.Controls.Add(pb_status);
+            panel2.Controls.Add(lable_Tag);
             panel2.Controls.Add(btn_login);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(206, 0);
@@ -258,54 +257,42 @@
             panel2.Size = new Size(1074, 87);
             panel2.TabIndex = 1;
             // 
-            // label5
+            // text_status
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(818, 35);
-            label5.Name = "label5";
-            label5.Size = new Size(96, 19);
-            label5.TabIndex = 4;
-            label5.Text = "Connected";
+            text_status.AutoSize = true;
+            text_status.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            text_status.Location = new Point(880, 32);
+            text_status.Name = "text_status";
+            text_status.Size = new Size(96, 19);
+            text_status.TabIndex = 4;
+            text_status.Text = "Connected";
             // 
-            // pictureBox1
+            // pb_status
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(779, 29);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(33, 31);
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
+            pb_status.Image = (Image)resources.GetObject("pb_status.Image");
+            pb_status.Location = new Point(841, 26);
+            pb_status.Name = "pb_status";
+            pb_status.Size = new Size(33, 31);
+            pb_status.TabIndex = 3;
+            pb_status.TabStop = false;
             // 
-            // button8
+            // lable_Tag
             // 
-            button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Image = (Image)resources.GetObject("button8.Image");
-            button8.Location = new Point(1023, 19);
-            button8.Name = "button8";
-            button8.Size = new Size(39, 41);
-            button8.TabIndex = 2;
-            button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(253, 110, 33);
-            label3.Location = new Point(18, 32);
-            label3.Name = "label3";
-            label3.Size = new Size(158, 28);
-            label3.TabIndex = 1;
-            label3.Text = "DASHBOARD";
+            lable_Tag.AutoSize = true;
+            lable_Tag.Font = new Font("Century Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lable_Tag.ForeColor = Color.FromArgb(253, 110, 33);
+            lable_Tag.Location = new Point(18, 32);
+            lable_Tag.Name = "lable_Tag";
+            lable_Tag.Size = new Size(158, 28);
+            lable_Tag.TabIndex = 1;
+            lable_Tag.Text = "DASHBOARD";
             // 
             // btn_login
             // 
             btn_login.FlatAppearance.BorderSize = 0;
             btn_login.FlatStyle = FlatStyle.Flat;
             btn_login.Image = (Image)resources.GetObject("btn_login.Image");
-            btn_login.Location = new Point(948, 12);
+            btn_login.Location = new Point(993, 12);
             btn_login.Name = "btn_login";
             btn_login.Size = new Size(69, 62);
             btn_login.TabIndex = 0;
@@ -342,9 +329,8 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "Main";
-            Text = "Form1";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -352,7 +338,7 @@
             panel4.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pb_status).EndInit();
             main_panel.ResumeLayout(false);
             main_panel.PerformLayout();
             ResumeLayout(false);
@@ -366,20 +352,19 @@
         private Label label1;
         private Button button1;
         private Panel panel4;
-        private Button button6;
-        private Button button5;
-        private Button button3;
-        private Button button4;
+        private Button btn_report;
+        private Button btn_timeoff;
+        private Button btn_timesheet;
+        private Button btn_dashboard;
         private Button button2;
-        private Label label3;
+        private Label lable_Tag;
         private Button btn_login;
-        private Button button8;
         private Button btn_addInfor;
         private Button btn_setting;
         private Label label2;
         private Label label4;
-        private Label label5;
-        private PictureBox pictureBox1;
+        private Label text_status;
+        private PictureBox pb_status;
         private Panel panel3;
         private Label label_notification;
     }

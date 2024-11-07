@@ -41,6 +41,10 @@ namespace FingerPrinter.Forms
             {
                 Program.IsLoggedIn = true;
                 Program.LoggedInUser = user_name;
+
+                Main mainForm = (Main)Application.OpenForms["Main"];
+                mainForm.enableApplication();
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
