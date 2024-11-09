@@ -1,4 +1,6 @@
 using FingerPrinter.Forms;
+using System.Data.SQLite;
+using System.IO;
 
 namespace FingerPrinter
 {
@@ -20,5 +22,8 @@ namespace FingerPrinter
 
         public static bool IsLoggedIn = false;
         public static string? LoggedInUser;
+        public static bool isConnectedDevice = false;
+        public static string imagePath = "../../../../icon";
+
     }
 }

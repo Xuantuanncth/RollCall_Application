@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label3 = new Label();
+            label2 = new Label();
+            cb_baudrate = new ComboBox();
+            cb_portName = new ComboBox();
+            bt_connect = new Button();
             panel2 = new Panel();
             label1 = new Label();
-            button1 = new Button();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            label2 = new Label();
-            label3 = new Label();
             panel3 = new Panel();
             label4 = new Label();
             panel1.SuspendLayout();
@@ -47,9 +47,9 @@
             // 
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(comboBox2);
-            panel1.Controls.Add(comboBox1);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(cb_baudrate);
+            panel1.Controls.Add(cb_portName);
+            panel1.Controls.Add(bt_connect);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
@@ -57,6 +57,52 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(357, 681);
             panel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(21, 166);
+            label3.Name = "label3";
+            label3.Size = new Size(97, 22);
+            label3.TabIndex = 5;
+            label3.Text = "Baudrate";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(21, 102);
+            label2.Name = "label2";
+            label2.Size = new Size(59, 22);
+            label2.TabIndex = 4;
+            label2.Text = "COM";
+            // 
+            // cb_baudrate
+            // 
+            cb_baudrate.FormattingEnabled = true;
+            cb_baudrate.Items.AddRange(new object[] { "9600", "115200" });
+            cb_baudrate.Location = new Point(21, 191);
+            cb_baudrate.Name = "cb_baudrate";
+            cb_baudrate.Size = new Size(191, 30);
+            cb_baudrate.TabIndex = 3;
+            // 
+            // cb_portName
+            // 
+            cb_portName.FormattingEnabled = true;
+            cb_portName.Location = new Point(21, 127);
+            cb_portName.Name = "cb_portName";
+            cb_portName.Size = new Size(191, 30);
+            cb_portName.TabIndex = 2;
+            // 
+            // bt_connect
+            // 
+            bt_connect.Location = new Point(232, 127);
+            bt_connect.Name = "bt_connect";
+            bt_connect.Size = new Size(119, 94);
+            bt_connect.TabIndex = 1;
+            bt_connect.Text = "Connect";
+            bt_connect.TextImageRelation = TextImageRelation.ImageBeforeText;
+            bt_connect.UseVisualStyleBackColor = true;
+            bt_connect.Click += bt_connect_Click;
             // 
             // panel2
             // 
@@ -78,51 +124,6 @@
             label1.Size = new Size(225, 32);
             label1.TabIndex = 0;
             label1.Text = "Connect Device";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(232, 127);
-            button1.Name = "button1";
-            button1.Size = new Size(119, 94);
-            button1.TabIndex = 1;
-            button1.Text = "Connect";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(21, 127);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(191, 30);
-            comboBox1.TabIndex = 2;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "9600", "115200" });
-            comboBox2.Location = new Point(21, 191);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(191, 30);
-            comboBox2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(21, 102);
-            label2.Name = "label2";
-            label2.Size = new Size(59, 22);
-            label2.TabIndex = 4;
-            label2.Text = "COM";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(21, 166);
-            label3.Name = "label3";
-            label3.Size = new Size(97, 22);
-            label3.TabIndex = 5;
-            label3.Text = "Baudrate";
             // 
             // panel3
             // 
@@ -169,13 +170,13 @@
         #endregion
 
         private Panel panel1;
-        private Button button1;
+        private Button bt_connect;
         private Panel panel2;
         private Label label1;
         private Label label3;
         private Label label2;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
+        private ComboBox cb_baudrate;
+        private ComboBox cb_portName;
         private Panel panel3;
         private Label label4;
     }

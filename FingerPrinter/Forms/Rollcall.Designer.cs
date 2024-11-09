@@ -127,7 +127,7 @@
             btn_addInfor.Name = "btn_addInfor";
             btn_addInfor.Size = new Size(206, 56);
             btn_addInfor.TabIndex = 6;
-            btn_addInfor.Text = "   Add Infor";
+            btn_addInfor.Text = "   Information";
             btn_addInfor.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_addInfor.UseVisualStyleBackColor = true;
             btn_addInfor.Click += btn_addInfor_Click;
@@ -231,7 +231,6 @@
             button1.Text = "   DashBoard";
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // label1
             // 
@@ -242,7 +241,6 @@
             label1.Size = new Size(125, 81);
             label1.TabIndex = 0;
             label1.Text = "RollCall";
-            label1.Click += label1_Click;
             // 
             // panel2
             // 
@@ -261,7 +259,7 @@
             // 
             text_status.AutoSize = true;
             text_status.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            text_status.Location = new Point(880, 32);
+            text_status.Location = new Point(867, 39);
             text_status.Name = "text_status";
             text_status.Size = new Size(96, 19);
             text_status.TabIndex = 4;
@@ -270,9 +268,10 @@
             // pb_status
             // 
             pb_status.Image = (Image)resources.GetObject("pb_status.Image");
-            pb_status.Location = new Point(841, 26);
+            pb_status.Location = new Point(819, 25);
             pb_status.Name = "pb_status";
-            pb_status.Size = new Size(33, 31);
+            pb_status.Size = new Size(42, 42);
+            pb_status.SizeMode = PictureBoxSizeMode.CenterImage;
             pb_status.TabIndex = 3;
             pb_status.TabStop = false;
             // 
@@ -291,10 +290,11 @@
             // 
             btn_login.FlatAppearance.BorderSize = 0;
             btn_login.FlatStyle = FlatStyle.Flat;
+            btn_login.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_login.Image = (Image)resources.GetObject("btn_login.Image");
-            btn_login.Location = new Point(993, 12);
+            btn_login.Location = new Point(987, 12);
             btn_login.Name = "btn_login";
-            btn_login.Size = new Size(69, 62);
+            btn_login.Size = new Size(75, 62);
             btn_login.TabIndex = 0;
             btn_login.Text = "Login";
             btn_login.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -310,13 +310,12 @@
             main_panel.Name = "main_panel";
             main_panel.Size = new Size(1074, 681);
             main_panel.TabIndex = 2;
-            main_panel.Paint += main_panel_Paint;
             // 
             // label_notification
             // 
             label_notification.AutoSize = true;
             label_notification.Font = new Font("Century Gothic", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_notification.Location = new Point(450, 239);
+            label_notification.Location = new Point(426, 263);
             label_notification.Name = "label_notification";
             label_notification.Size = new Size(0, 42);
             label_notification.TabIndex = 0;

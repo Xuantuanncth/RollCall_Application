@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
+            btn_register = new Button();
             label3 = new Label();
-            textBox1 = new TextBox();
+            tb_confirm_pass = new TextBox();
             label2 = new Label();
-            user_name = new TextBox();
+            tb_user_name = new TextBox();
             label4 = new Label();
-            textBox2 = new TextBox();
+            tb_password = new TextBox();
             label5 = new Label();
-            textBox3 = new TextBox();
-            linkLabel1 = new LinkLabel();
+            tb_mail = new TextBox();
+            ltb_back_login = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -65,19 +65,19 @@
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
             // 
-            // button1
+            // btn_register
             // 
-            button1.BackColor = Color.FromArgb(253, 110, 33);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(67, 550);
-            button1.Name = "button1";
-            button1.Size = new Size(401, 59);
-            button1.TabIndex = 15;
-            button1.Text = "Register";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btn_register.BackColor = Color.FromArgb(253, 110, 33);
+            btn_register.FlatAppearance.BorderSize = 0;
+            btn_register.FlatStyle = FlatStyle.Flat;
+            btn_register.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_register.Location = new Point(67, 550);
+            btn_register.Name = "btn_register";
+            btn_register.Size = new Size(401, 59);
+            btn_register.TabIndex = 5;
+            btn_register.Text = "Register";
+            btn_register.UseVisualStyleBackColor = false;
+            btn_register.Click += btn_register_Click;
             // 
             // label3
             // 
@@ -89,17 +89,16 @@
             label3.TabIndex = 14;
             label3.Text = "Confirm Password";
             // 
-            // textBox1
+            // tb_confirm_pass
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(67, 447);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.PasswordChar = '*';
-            textBox1.Size = new Size(401, 48);
-            textBox1.TabIndex = 13;
-            textBox1.TextChanged += textBox1_TextChanged;
+            tb_confirm_pass.BorderStyle = BorderStyle.None;
+            tb_confirm_pass.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tb_confirm_pass.Location = new Point(67, 447);
+            tb_confirm_pass.Multiline = true;
+            tb_confirm_pass.Name = "tb_confirm_pass";
+            tb_confirm_pass.PasswordChar = '*';
+            tb_confirm_pass.Size = new Size(401, 48);
+            tb_confirm_pass.TabIndex = 4;
             // 
             // label2
             // 
@@ -111,15 +110,15 @@
             label2.TabIndex = 12;
             label2.Text = "User name";
             // 
-            // user_name
+            // tb_user_name
             // 
-            user_name.BorderStyle = BorderStyle.None;
-            user_name.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            user_name.Location = new Point(67, 163);
-            user_name.Multiline = true;
-            user_name.Name = "user_name";
-            user_name.Size = new Size(401, 48);
-            user_name.TabIndex = 11;
+            tb_user_name.BorderStyle = BorderStyle.None;
+            tb_user_name.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tb_user_name.Location = new Point(67, 163);
+            tb_user_name.Multiline = true;
+            tb_user_name.Name = "tb_user_name";
+            tb_user_name.Size = new Size(401, 48);
+            tb_user_name.TabIndex = 1;
             // 
             // label4
             // 
@@ -130,18 +129,17 @@
             label4.Size = new Size(95, 22);
             label4.TabIndex = 17;
             label4.Text = "Password";
-            label4.Click += label4_Click;
             // 
-            // textBox2
+            // tb_password
             // 
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(67, 349);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.PasswordChar = '*';
-            textBox2.Size = new Size(401, 48);
-            textBox2.TabIndex = 16;
+            tb_password.BorderStyle = BorderStyle.None;
+            tb_password.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tb_password.Location = new Point(67, 349);
+            tb_password.Multiline = true;
+            tb_password.Name = "tb_password";
+            tb_password.PasswordChar = '*';
+            tb_password.Size = new Size(401, 48);
+            tb_password.TabIndex = 3;
             // 
             // label5
             // 
@@ -153,43 +151,44 @@
             label5.TabIndex = 19;
             label5.Text = "Email";
             // 
-            // textBox3
+            // tb_mail
             // 
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(67, 250);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(401, 48);
-            textBox3.TabIndex = 18;
+            tb_mail.BorderStyle = BorderStyle.None;
+            tb_mail.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tb_mail.Location = new Point(67, 250);
+            tb_mail.Multiline = true;
+            tb_mail.Name = "tb_mail";
+            tb_mail.Size = new Size(401, 48);
+            tb_mail.TabIndex = 2;
             // 
-            // linkLabel1
+            // ltb_back_login
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel1.LinkColor = Color.Gray;
-            linkLabel1.Location = new Point(233, 636);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(64, 24);
-            linkLabel1.TabIndex = 20;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Login";
+            ltb_back_login.AutoSize = true;
+            ltb_back_login.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ltb_back_login.LinkColor = Color.Gray;
+            ltb_back_login.Location = new Point(233, 636);
+            ltb_back_login.Name = "ltb_back_login";
+            ltb_back_login.Size = new Size(64, 24);
+            ltb_back_login.TabIndex = 6;
+            ltb_back_login.TabStop = true;
+            ltb_back_login.Text = "Login";
+            ltb_back_login.LinkClicked += ltb_back_login_Clicked;
             // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(550, 700);
-            Controls.Add(linkLabel1);
+            Controls.Add(ltb_back_login);
             Controls.Add(label5);
-            Controls.Add(textBox3);
+            Controls.Add(tb_mail);
             Controls.Add(label4);
-            Controls.Add(textBox2);
-            Controls.Add(button1);
+            Controls.Add(tb_password);
+            Controls.Add(btn_register);
             Controls.Add(label3);
-            Controls.Add(textBox1);
+            Controls.Add(tb_confirm_pass);
             Controls.Add(label2);
-            Controls.Add(user_name);
+            Controls.Add(tb_user_name);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -202,15 +201,15 @@
         #endregion
         private Label label1;
         private PictureBox pictureBox1;
-        private Button button1;
+        private Button btn_register;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox tb_confirm_pass;
         private Label label2;
-        private TextBox user_name;
+        private TextBox tb_user_name;
         private Label label4;
-        private TextBox textBox2;
+        private TextBox tb_password;
         private Label label5;
-        private TextBox textBox3;
-        private LinkLabel linkLabel1;
+        private TextBox tb_mail;
+        private LinkLabel ltb_back_login;
     }
 }

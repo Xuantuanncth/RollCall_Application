@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -37,7 +39,7 @@ namespace FingerPrinter.Forms
             string user_name = tb_user_name.Text;
             string password = tb_password.Text;
 
-            if (check_Login(user_name, password))
+            if (ValidateLogin(user_name, password))
             {
                 Program.IsLoggedIn = true;
                 Program.LoggedInUser = user_name;
@@ -53,17 +55,50 @@ namespace FingerPrinter.Forms
                 MessageBox.Show("Incorrect username or password");
             }
 
-            
+
         }
 
-        private bool check_Login(string user_name, string password)
+        private bool ValidateLogin(string username, string password)
         {
-            bool r_val = false;
-            if(user_name == "tuandx" && password == "1")
+            string connectionString = "Data Source=Account.db;Version=3;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
-                r_val = true;
+                connection.Open();
+
+                SQLiteCommand command = new SQLiteCommand("SELECT * FROM Users WHERE Name = @Name", connection);
+                command.Parameters.AddWithValue("@Name", username);
+
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    string storedPasswordHash = reader["PasswordHash"].ToString();
+
+                    // Verify password hash using a secure comparison method (e.g., constant-time comparison)
+                    if (hash_password(password) == storedPasswordHash)
+                    {
+                        return true; // Login successful
+                    }
+                }
+
+                return false; // Login failed
             }
-            return r_val;
+        }
+
+        private string hash_password(string password)
+        {
+            using (SHA256 hash = SHA256.Create())
+            {
+                byte[] hashedBytes = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hashedBytes);
+            }
+        }
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Register register_section = new Register();
+            register_section.Show();
+            this.Close();
         }
     }
 }
