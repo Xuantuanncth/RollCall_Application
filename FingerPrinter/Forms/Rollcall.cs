@@ -74,7 +74,8 @@ namespace FingerPrinter
         {
             string studentConnection = "Data Source=Student.db;Version=3;";
 
-            using (SQLiteConnection connection = new SQLiteConnection(studentConnection)) {
+            using (SQLiteConnection connection = new SQLiteConnection(studentConnection))
+            {
                 connection.Open();
 
                 SQLiteCommand command = new SQLiteCommand(
@@ -94,7 +95,8 @@ namespace FingerPrinter
                     command.ExecuteNonQuery();
                     Debug.WriteLine("Table student created successfuly");
                 }
-                catch (SQLiteException ex) {
+                catch (SQLiteException ex)
+                {
                     Debug.WriteLine("Error create student: ", ex);
                 }
             }
@@ -142,7 +144,7 @@ namespace FingerPrinter
             if (isConnected)
             {
                 text_status.Text = "Connected";
-                 pb_status.Image = Image.FromFile(Program.imagePath+"/connected.png");
+                pb_status.Image = Image.FromFile(Program.imagePath + "/connected.png");
             }
             else
             {
@@ -202,5 +204,6 @@ namespace FingerPrinter
             dashboard_section.Dock = DockStyle.Fill;
             dashboard_section.Show();
         }
+
     }
 }

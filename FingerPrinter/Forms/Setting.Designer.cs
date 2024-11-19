@@ -63,7 +63,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(21, 166);
             label3.Name = "label3";
-            label3.Size = new Size(97, 22);
+            label3.Size = new Size(85, 24);
             label3.TabIndex = 5;
             label3.Text = "Baudrate";
             // 
@@ -72,7 +72,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(21, 102);
             label2.Name = "label2";
-            label2.Size = new Size(59, 22);
+            label2.Size = new Size(54, 24);
             label2.TabIndex = 4;
             label2.Text = "COM";
             // 
@@ -82,7 +82,7 @@
             cb_baudrate.Items.AddRange(new object[] { "9600", "115200" });
             cb_baudrate.Location = new Point(21, 191);
             cb_baudrate.Name = "cb_baudrate";
-            cb_baudrate.Size = new Size(191, 30);
+            cb_baudrate.Size = new Size(191, 32);
             cb_baudrate.TabIndex = 3;
             // 
             // cb_portName
@@ -90,7 +90,7 @@
             cb_portName.FormattingEnabled = true;
             cb_portName.Location = new Point(21, 127);
             cb_portName.Name = "cb_portName";
-            cb_portName.Size = new Size(191, 30);
+            cb_portName.Size = new Size(191, 32);
             cb_portName.TabIndex = 2;
             // 
             // bt_connect
@@ -117,11 +117,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(253, 110, 33);
             label1.Location = new Point(61, 31);
             label1.Name = "label1";
-            label1.Size = new Size(225, 32);
+            label1.Size = new Size(221, 31);
             label1.TabIndex = 0;
             label1.Text = "Connect Device";
             // 
@@ -138,26 +138,27 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.White;
             label4.Location = new Point(245, 31);
             label4.Name = "label4";
-            label4.Size = new Size(239, 36);
+            label4.Size = new Size(233, 33);
             label4.TabIndex = 0;
             label4.Text = "Account Setting";
             // 
             // Setting
             // 
-            AutoScaleDimensions = new SizeF(11F, 22F);
+            AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1074, 681);
             Controls.Add(panel3);
             Controls.Add(panel1);
-            Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(5, 4, 5, 4);
             Name = "Setting";
             Text = "Setting";
+            Load += Setting_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);

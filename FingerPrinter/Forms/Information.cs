@@ -15,7 +15,8 @@ namespace FingerPrinter.Forms
 {
     public partial class Information : Form
     {
-        private string avatar_Path;
+
+        private string avatar_Path = string.Empty;
         public Information()
         {
             InitializeComponent();
@@ -129,32 +130,27 @@ namespace FingerPrinter.Forms
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
 
-                dataGridView1.DataSource = dataTable;
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void lb_card_infor_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
+        }
 
-                // Access the desired columns
-                int id = Convert.ToInt32(row.Cells["Id"].Value);
-                string name = row.Cells["Name"].Value.ToString();
-                string className = row.Cells["Class"].Value.ToString();
-                string description = row.Cells["Description"].Value.ToString();
-                string avatar_info_path = row.Cells["AvatarPath"].Value.ToString();
+        private void lb_card_class_Click(object sender, EventArgs e)
+        {
 
-                // Do something with the retrieved data, e.g., display in a TextBox:
-                lb_infor_class.Text = className;
-                lb_info_name.Text = name;
-                lb_info_descripton.Text = description;
-                pb_infor_avatar.Image = Image.FromFile(avatar_info_path);
-                pb_infor_avatar.SizeMode = PictureBoxSizeMode.Zoom;
+        }
 
-            }
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
