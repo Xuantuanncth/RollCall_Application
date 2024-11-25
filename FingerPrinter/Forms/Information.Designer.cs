@@ -45,52 +45,52 @@
             label2 = new Label();
             bt_addPicture = new Button();
             tabPage1 = new TabPage();
+            lb_count_page = new Label();
             bt_previous = new Button();
             bt_next = new Button();
             panel6 = new Panel();
+            lb_id6 = new Label();
             textBox6 = new TextBox();
             lb_address6 = new Label();
             lb_class6 = new Label();
             lb_name6 = new Label();
             pictureBox6 = new PictureBox();
             panel5 = new Panel();
+            lb_id5 = new Label();
             textBox5 = new TextBox();
             lb_address5 = new Label();
             lb_class5 = new Label();
             lb_name5 = new Label();
             pictureBox5 = new PictureBox();
             panel4 = new Panel();
+            lb_id4 = new Label();
             textBox4 = new TextBox();
             lb_address4 = new Label();
             lb_class4 = new Label();
             lb_name4 = new Label();
             pictureBox4 = new PictureBox();
             panel3 = new Panel();
+            lb_id3 = new Label();
             textBox3 = new TextBox();
             lb_address3 = new Label();
             lb_class3 = new Label();
             lb_name3 = new Label();
             pictureBox3 = new PictureBox();
             panel2 = new Panel();
+            lb_id2 = new Label();
             textBox2 = new TextBox();
             lb_address2 = new Label();
             lb_class2 = new Label();
             lb_name2 = new Label();
             pictureBox2 = new PictureBox();
             panel1 = new Panel();
+            lb_id1 = new Label();
             textBox1 = new TextBox();
             lb_address1 = new Label();
             lb_class1 = new Label();
             lb_name1 = new Label();
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
-            lb_id1 = new Label();
-            lb_id2 = new Label();
-            lb_id3 = new Label();
-            lb_id4 = new Label();
-            lb_id5 = new Label();
-            lb_id6 = new Label();
-            lb_count_page = new Label();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_avatar).BeginInit();
             panel10.SuspendLayout();
@@ -292,6 +292,16 @@
             tabPage1.Text = "Information";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lb_count_page
+            // 
+            lb_count_page.AutoSize = true;
+            lb_count_page.ForeColor = Color.CornflowerBlue;
+            lb_count_page.Location = new Point(859, 600);
+            lb_count_page.Name = "lb_count_page";
+            lb_count_page.Size = new Size(18, 20);
+            lb_count_page.TabIndex = 8;
+            lb_count_page.Text = "1";
+            // 
             // bt_previous
             // 
             bt_previous.BackColor = Color.FromArgb(253, 110, 33);
@@ -302,7 +312,6 @@
             bt_previous.TabIndex = 7;
             bt_previous.Text = "Previous";
             bt_previous.UseVisualStyleBackColor = false;
-            bt_previous.Click += button2_Click;
             // 
             // bt_next
             // 
@@ -315,6 +324,7 @@
             bt_next.TabIndex = 6;
             bt_next.Text = "Next";
             bt_next.UseVisualStyleBackColor = false;
+            bt_next.Click += bt_next_Click;
             // 
             // panel6
             // 
@@ -330,6 +340,16 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(292, 246);
             panel6.TabIndex = 5;
+            // 
+            // lb_id6
+            // 
+            lb_id6.AutoSize = true;
+            lb_id6.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id6.Location = new Point(161, 72);
+            lb_id6.Name = "lb_id6";
+            lb_id6.Size = new Size(43, 20);
+            lb_id6.TabIndex = 5;
+            lb_id6.Text = "ID: 1";
             // 
             // textBox6
             // 
@@ -400,6 +420,16 @@
             panel5.Size = new Size(292, 246);
             panel5.TabIndex = 5;
             // 
+            // lb_id5
+            // 
+            lb_id5.AutoSize = true;
+            lb_id5.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id5.Location = new Point(159, 71);
+            lb_id5.Name = "lb_id5";
+            lb_id5.Size = new Size(43, 20);
+            lb_id5.TabIndex = 5;
+            lb_id5.Text = "ID: 1";
+            // 
             // textBox5
             // 
             textBox5.BackColor = Color.FromArgb(249, 249, 249);
@@ -468,6 +498,16 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(292, 246);
             panel4.TabIndex = 5;
+            // 
+            // lb_id4
+            // 
+            lb_id4.AutoSize = true;
+            lb_id4.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id4.Location = new Point(159, 73);
+            lb_id4.Name = "lb_id4";
+            lb_id4.Size = new Size(43, 20);
+            lb_id4.TabIndex = 5;
+            lb_id4.Text = "ID: 1";
             // 
             // textBox4
             // 
@@ -538,6 +578,16 @@
             panel3.Size = new Size(292, 246);
             panel3.TabIndex = 5;
             // 
+            // lb_id3
+            // 
+            lb_id3.AutoSize = true;
+            lb_id3.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id3.Location = new Point(160, 74);
+            lb_id3.Name = "lb_id3";
+            lb_id3.Size = new Size(43, 20);
+            lb_id3.TabIndex = 5;
+            lb_id3.Text = "ID: 1";
+            // 
             // textBox3
             // 
             textBox3.BackColor = Color.FromArgb(249, 249, 249);
@@ -606,6 +656,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(292, 246);
             panel2.TabIndex = 1;
+            // 
+            // lb_id2
+            // 
+            lb_id2.AutoSize = true;
+            lb_id2.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id2.Location = new Point(158, 73);
+            lb_id2.Name = "lb_id2";
+            lb_id2.Size = new Size(43, 20);
+            lb_id2.TabIndex = 6;
+            lb_id2.Text = "ID: 1";
             // 
             // textBox2
             // 
@@ -676,6 +736,16 @@
             panel1.Size = new Size(292, 246);
             panel1.TabIndex = 0;
             // 
+            // lb_id1
+            // 
+            lb_id1.AutoSize = true;
+            lb_id1.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id1.Location = new Point(158, 73);
+            lb_id1.Name = "lb_id1";
+            lb_id1.Size = new Size(43, 20);
+            lb_id1.TabIndex = 5;
+            lb_id1.Text = "ID: 1";
+            // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(249, 249, 249);
@@ -708,7 +778,6 @@
             lb_class1.Size = new Size(76, 20);
             lb_class1.TabIndex = 2;
             lb_class1.Text = "Class: 1A";
-            lb_class1.Click += label6_Click;
             // 
             // lb_name1
             // 
@@ -741,76 +810,6 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1041, 681);
             tabControl1.TabIndex = 13;
-            // 
-            // lb_id1
-            // 
-            lb_id1.AutoSize = true;
-            lb_id1.ForeColor = SystemColors.ActiveCaptionText;
-            lb_id1.Location = new Point(158, 73);
-            lb_id1.Name = "lb_id1";
-            lb_id1.Size = new Size(43, 20);
-            lb_id1.TabIndex = 5;
-            lb_id1.Text = "ID: 1";
-            // 
-            // lb_id2
-            // 
-            lb_id2.AutoSize = true;
-            lb_id2.ForeColor = SystemColors.ActiveCaptionText;
-            lb_id2.Location = new Point(158, 73);
-            lb_id2.Name = "lb_id2";
-            lb_id2.Size = new Size(43, 20);
-            lb_id2.TabIndex = 6;
-            lb_id2.Text = "ID: 1";
-            // 
-            // lb_id3
-            // 
-            lb_id3.AutoSize = true;
-            lb_id3.ForeColor = SystemColors.ActiveCaptionText;
-            lb_id3.Location = new Point(160, 74);
-            lb_id3.Name = "lb_id3";
-            lb_id3.Size = new Size(43, 20);
-            lb_id3.TabIndex = 5;
-            lb_id3.Text = "ID: 1";
-            // 
-            // lb_id4
-            // 
-            lb_id4.AutoSize = true;
-            lb_id4.ForeColor = SystemColors.ActiveCaptionText;
-            lb_id4.Location = new Point(159, 73);
-            lb_id4.Name = "lb_id4";
-            lb_id4.Size = new Size(43, 20);
-            lb_id4.TabIndex = 5;
-            lb_id4.Text = "ID: 1";
-            // 
-            // lb_id5
-            // 
-            lb_id5.AutoSize = true;
-            lb_id5.ForeColor = SystemColors.ActiveCaptionText;
-            lb_id5.Location = new Point(159, 71);
-            lb_id5.Name = "lb_id5";
-            lb_id5.Size = new Size(43, 20);
-            lb_id5.TabIndex = 5;
-            lb_id5.Text = "ID: 1";
-            // 
-            // lb_id6
-            // 
-            lb_id6.AutoSize = true;
-            lb_id6.ForeColor = SystemColors.ActiveCaptionText;
-            lb_id6.Location = new Point(161, 72);
-            lb_id6.Name = "lb_id6";
-            lb_id6.Size = new Size(43, 20);
-            lb_id6.TabIndex = 5;
-            lb_id6.Text = "ID: 1";
-            // 
-            // lb_count_page
-            // 
-            lb_count_page.AutoSize = true;
-            lb_count_page.ForeColor = Color.CornflowerBlue;
-            lb_count_page.Location = new Point(859, 600);
-            lb_count_page.Name = "lb_count_page";
-            lb_count_page.Size = new Size(18, 20);
-            lb_count_page.TabIndex = 8;
-            lb_count_page.Text = "1";
             // 
             // Information
             // 

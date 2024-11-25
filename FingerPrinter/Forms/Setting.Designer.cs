@@ -38,9 +38,15 @@
             label1 = new Label();
             panel3 = new Panel();
             label4 = new Label();
+            panel4 = new Panel();
+            bt_delete_database = new Button();
+            comboBox1 = new ComboBox();
+            label5 = new Label();
+            bt_load_database = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -146,11 +152,60 @@
             label4.TabIndex = 0;
             label4.Text = "Account Setting";
             // 
+            // panel4
+            // 
+            panel4.Controls.Add(bt_load_database);
+            panel4.Controls.Add(label5);
+            panel4.Controls.Add(comboBox1);
+            panel4.Controls.Add(bt_delete_database);
+            panel4.Dock = DockStyle.Top;
+            panel4.Location = new Point(357, 94);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(717, 127);
+            panel4.TabIndex = 2;
+            // 
+            // bt_delete_database
+            // 
+            bt_delete_database.Location = new Point(219, 68);
+            bt_delete_database.Name = "bt_delete_database";
+            bt_delete_database.Size = new Size(84, 40);
+            bt_delete_database.TabIndex = 0;
+            bt_delete_database.Text = "Delete";
+            bt_delete_database.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(25, 72);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(163, 32);
+            comboBox1.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(25, 22);
+            label5.Name = "label5";
+            label5.Size = new Size(88, 24);
+            label5.TabIndex = 2;
+            label5.Text = "Database";
+            // 
+            // bt_load_database
+            // 
+            bt_load_database.Location = new Point(219, 22);
+            bt_load_database.Name = "bt_load_database";
+            bt_load_database.Size = new Size(84, 40);
+            bt_load_database.TabIndex = 3;
+            bt_load_database.Text = "Load";
+            bt_load_database.UseVisualStyleBackColor = true;
+            bt_load_database.Click += bt_load_database_Click;
+            // 
             // Setting
             // 
             AutoScaleDimensions = new SizeF(11F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1074, 681);
+            Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -165,6 +220,8 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -180,5 +237,10 @@
         private ComboBox cb_portName;
         private Panel panel3;
         private Label label4;
+        private Panel panel4;
+        private Label label5;
+        private ComboBox comboBox1;
+        private Button bt_delete_database;
+        private Button bt_load_database;
     }
 }

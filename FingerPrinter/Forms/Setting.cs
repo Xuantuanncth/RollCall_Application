@@ -14,6 +14,7 @@ namespace FingerPrinter.Forms
 {
     public partial class Setting : Form
     {
+        private string databaseFolder = Path.Combine(Application.StartupPath, "Databases");
         public Setting()
         {
             string[] portNames = SerialManager.Instance.GetAvailablePortNames();
@@ -54,17 +55,44 @@ namespace FingerPrinter.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("Cannot connect the Serial Port");
-                Debug.WriteLine("Error: ",ex);
+                Debug.WriteLine("Error: ", ex);
             }
         }
 
         private void Setting_Load(object sender, EventArgs e)
         {
-            if(Program.isConnectedDevice)
+            if (Program.isConnectedDevice)
             {
                 cb_portName.Text = SerialManager.Instance.GetPortName();
                 cb_baudrate.Text = SerialManager.Instance.GetBaudrate().ToString();
                 bt_connect.Text = "Disconnect";
+            }
+        }
+
+        private void bt_load_database_Click(object sender, EventArgs e)
+        {
+
+            if (!Directory.Exists(databaseFolder))
+            {
+                Directory.CreateDirectory(databaseFolder);
+            }
+
+            // Get all .db files in the folder
+            string[] databaseFiles = Directory.GetFiles(databaseFolder, "*.db");
+
+            // Clear existing items in ComboBox
+            comboBox1.Items.Clear();
+
+            // Add file names (without path) to ComboBox
+            foreach (string file in databaseFiles)
+            {
+                comboBox1.Items.Add(Path.GetFileName(file));
+            }
+
+            // Select the first item by default if available
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
             }
         }
     }
