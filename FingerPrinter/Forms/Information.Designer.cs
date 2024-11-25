@@ -32,7 +32,7 @@
             openFileDialog1 = new OpenFileDialog();
             tabPage2 = new TabPage();
             pb_avatar = new PictureBox();
-            panel1 = new Panel();
+            panel10 = new Panel();
             tb_description = new RichTextBox();
             label4 = new Label();
             add_username = new TextBox();
@@ -45,60 +45,67 @@
             label2 = new Label();
             bt_addPicture = new Button();
             tabPage1 = new TabPage();
-            button2 = new Button();
-            button1 = new Button();
-            panel7 = new Panel();
-            textBox6 = new TextBox();
-            label20 = new Label();
-            label21 = new Label();
-            label22 = new Label();
-            pictureBox6 = new PictureBox();
+            bt_previous = new Button();
+            bt_next = new Button();
             panel6 = new Panel();
-            textBox5 = new TextBox();
-            label17 = new Label();
-            label18 = new Label();
-            label19 = new Label();
-            pictureBox5 = new PictureBox();
+            textBox6 = new TextBox();
+            lb_address6 = new Label();
+            lb_class6 = new Label();
+            lb_name6 = new Label();
+            pictureBox6 = new PictureBox();
             panel5 = new Panel();
-            textBox4 = new TextBox();
-            label14 = new Label();
-            label15 = new Label();
-            label16 = new Label();
-            pictureBox4 = new PictureBox();
+            textBox5 = new TextBox();
+            lb_address5 = new Label();
+            lb_class5 = new Label();
+            lb_name5 = new Label();
+            pictureBox5 = new PictureBox();
             panel4 = new Panel();
-            textBox3 = new TextBox();
-            label11 = new Label();
-            label12 = new Label();
-            label13 = new Label();
-            pictureBox3 = new PictureBox();
+            textBox4 = new TextBox();
+            lb_address4 = new Label();
+            lb_class4 = new Label();
+            lb_name4 = new Label();
+            pictureBox4 = new PictureBox();
             panel3 = new Panel();
-            textBox2 = new TextBox();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            pictureBox2 = new PictureBox();
+            textBox3 = new TextBox();
+            lb_address3 = new Label();
+            lb_class3 = new Label();
+            lb_name3 = new Label();
+            pictureBox3 = new PictureBox();
             panel2 = new Panel();
+            textBox2 = new TextBox();
+            lb_address2 = new Label();
+            lb_class2 = new Label();
+            lb_name2 = new Label();
+            pictureBox2 = new PictureBox();
+            panel1 = new Panel();
             textBox1 = new TextBox();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
+            lb_address1 = new Label();
+            lb_class1 = new Label();
+            lb_name1 = new Label();
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
+            lb_id1 = new Label();
+            lb_id2 = new Label();
+            lb_id3 = new Label();
+            lb_id4 = new Label();
+            lb_id5 = new Label();
+            lb_id6 = new Label();
+            lb_count_page = new Label();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_avatar).BeginInit();
-            panel1.SuspendLayout();
+            panel10.SuspendLayout();
             tabPage1.SuspendLayout();
-            panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             SuspendLayout();
@@ -110,7 +117,7 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(pb_avatar);
-            tabPage2.Controls.Add(panel1);
+            tabPage2.Controls.Add(panel10);
             tabPage2.Controls.Add(bt_addPicture);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
@@ -132,24 +139,24 @@
             pb_avatar.TabIndex = 0;
             pb_avatar.TabStop = false;
             // 
-            // panel1
+            // panel10
             // 
-            panel1.BackColor = Color.FromArgb(235, 238, 249);
-            panel1.Controls.Add(tb_description);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(add_username);
-            panel1.Controls.Add(add_class);
-            panel1.Controls.Add(add_finish);
-            panel1.Controls.Add(add_id);
-            panel1.Controls.Add(bt_fingerprinter);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(409, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(621, 642);
-            panel1.TabIndex = 12;
+            panel10.BackColor = Color.FromArgb(235, 238, 249);
+            panel10.Controls.Add(tb_description);
+            panel10.Controls.Add(label4);
+            panel10.Controls.Add(add_username);
+            panel10.Controls.Add(add_class);
+            panel10.Controls.Add(add_finish);
+            panel10.Controls.Add(add_id);
+            panel10.Controls.Add(bt_fingerprinter);
+            panel10.Controls.Add(label1);
+            panel10.Controls.Add(label3);
+            panel10.Controls.Add(label2);
+            panel10.Dock = DockStyle.Right;
+            panel10.Location = new Point(409, 3);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(621, 642);
+            panel10.TabIndex = 12;
             // 
             // tb_description
             // 
@@ -267,14 +274,15 @@
             // tabPage1
             // 
             tabPage1.AutoScroll = true;
-            tabPage1.Controls.Add(button2);
-            tabPage1.Controls.Add(button1);
-            tabPage1.Controls.Add(panel7);
+            tabPage1.Controls.Add(lb_count_page);
+            tabPage1.Controls.Add(bt_previous);
+            tabPage1.Controls.Add(bt_next);
             tabPage1.Controls.Add(panel6);
             tabPage1.Controls.Add(panel5);
             tabPage1.Controls.Add(panel4);
             tabPage1.Controls.Add(panel3);
             tabPage1.Controls.Add(panel2);
+            tabPage1.Controls.Add(panel1);
             tabPage1.ForeColor = SystemColors.ControlDark;
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
@@ -284,38 +292,44 @@
             tabPage1.Text = "Information";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // bt_previous
             // 
-            button2.Location = new Point(771, 589);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 41);
-            button2.TabIndex = 7;
-            button2.Text = "Previous";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            bt_previous.BackColor = Color.FromArgb(253, 110, 33);
+            bt_previous.ForeColor = SystemColors.ActiveCaptionText;
+            bt_previous.Location = new Point(760, 589);
+            bt_previous.Name = "bt_previous";
+            bt_previous.Size = new Size(93, 41);
+            bt_previous.TabIndex = 7;
+            bt_previous.Text = "Previous";
+            bt_previous.UseVisualStyleBackColor = false;
+            bt_previous.Click += button2_Click;
             // 
-            // button1
+            // bt_next
             // 
-            button1.Location = new Point(885, 589);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 41);
-            button1.TabIndex = 6;
-            button1.Text = "Next";
-            button1.UseVisualStyleBackColor = true;
+            bt_next.BackColor = Color.FromArgb(253, 110, 33);
+            bt_next.FlatAppearance.BorderSize = 0;
+            bt_next.ForeColor = SystemColors.ActiveCaptionText;
+            bt_next.Location = new Point(885, 589);
+            bt_next.Name = "bt_next";
+            bt_next.Size = new Size(93, 41);
+            bt_next.TabIndex = 6;
+            bt_next.Text = "Next";
+            bt_next.UseVisualStyleBackColor = false;
             // 
-            // panel7
+            // panel6
             // 
-            panel7.BorderStyle = BorderStyle.FixedSingle;
-            panel7.Controls.Add(textBox6);
-            panel7.Controls.Add(label20);
-            panel7.Controls.Add(label21);
-            panel7.Controls.Add(label22);
-            panel7.Controls.Add(pictureBox6);
-            panel7.ForeColor = SystemColors.ControlDark;
-            panel7.Location = new Point(686, 298);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(292, 246);
-            panel7.TabIndex = 5;
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(lb_id6);
+            panel6.Controls.Add(textBox6);
+            panel6.Controls.Add(lb_address6);
+            panel6.Controls.Add(lb_class6);
+            panel6.Controls.Add(lb_name6);
+            panel6.Controls.Add(pictureBox6);
+            panel6.ForeColor = SystemColors.ControlDark;
+            panel6.Location = new Point(686, 298);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(292, 246);
+            panel6.TabIndex = 5;
             // 
             // textBox6
             // 
@@ -330,36 +344,36 @@
             textBox6.TabIndex = 4;
             textBox6.Text = "Ngũ Hành Sơn, Đà Nẵng";
             // 
-            // label20
+            // lb_address6
             // 
-            label20.AutoSize = true;
-            label20.ForeColor = SystemColors.ActiveCaptionText;
-            label20.Location = new Point(158, 100);
-            label20.Name = "label20";
-            label20.Size = new Size(68, 20);
-            label20.TabIndex = 3;
-            label20.Text = "Address";
+            lb_address6.AutoSize = true;
+            lb_address6.ForeColor = SystemColors.ActiveCaptionText;
+            lb_address6.Location = new Point(158, 100);
+            lb_address6.Name = "lb_address6";
+            lb_address6.Size = new Size(68, 20);
+            lb_address6.TabIndex = 3;
+            lb_address6.Text = "Address";
             // 
-            // label21
+            // lb_class6
             // 
-            label21.AutoSize = true;
-            label21.ForeColor = SystemColors.ActiveCaptionText;
-            label21.Location = new Point(158, 46);
-            label21.Name = "label21";
-            label21.Size = new Size(76, 20);
-            label21.TabIndex = 2;
-            label21.Text = "Class: 1A";
+            lb_class6.AutoSize = true;
+            lb_class6.ForeColor = SystemColors.ActiveCaptionText;
+            lb_class6.Location = new Point(158, 46);
+            lb_class6.Name = "lb_class6";
+            lb_class6.Size = new Size(76, 20);
+            lb_class6.TabIndex = 2;
+            lb_class6.Text = "Class: 1A";
             // 
-            // label22
+            // lb_name6
             // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label22.ForeColor = Color.Black;
-            label22.Location = new Point(14, 12);
-            label22.Name = "label22";
-            label22.Size = new Size(103, 19);
-            label22.TabIndex = 1;
-            label22.Text = "Donal Trump";
+            lb_name6.AutoSize = true;
+            lb_name6.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb_name6.ForeColor = Color.Black;
+            lb_name6.Location = new Point(14, 12);
+            lb_name6.Name = "lb_name6";
+            lb_name6.Size = new Size(103, 19);
+            lb_name6.TabIndex = 1;
+            lb_name6.Text = "Donal Trump";
             // 
             // pictureBox6
             // 
@@ -371,19 +385,20 @@
             pictureBox6.TabIndex = 0;
             pictureBox6.TabStop = false;
             // 
-            // panel6
+            // panel5
             // 
-            panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Controls.Add(textBox5);
-            panel6.Controls.Add(label17);
-            panel6.Controls.Add(label18);
-            panel6.Controls.Add(label19);
-            panel6.Controls.Add(pictureBox5);
-            panel6.ForeColor = SystemColors.ControlDark;
-            panel6.Location = new Point(359, 298);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(292, 246);
-            panel6.TabIndex = 5;
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(lb_id5);
+            panel5.Controls.Add(textBox5);
+            panel5.Controls.Add(lb_address5);
+            panel5.Controls.Add(lb_class5);
+            panel5.Controls.Add(lb_name5);
+            panel5.Controls.Add(pictureBox5);
+            panel5.ForeColor = SystemColors.ControlDark;
+            panel5.Location = new Point(359, 298);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(292, 246);
+            panel5.TabIndex = 5;
             // 
             // textBox5
             // 
@@ -398,36 +413,36 @@
             textBox5.TabIndex = 4;
             textBox5.Text = "Ngũ Hành Sơn, Đà Nẵng";
             // 
-            // label17
+            // lb_address5
             // 
-            label17.AutoSize = true;
-            label17.ForeColor = SystemColors.ActiveCaptionText;
-            label17.Location = new Point(158, 100);
-            label17.Name = "label17";
-            label17.Size = new Size(68, 20);
-            label17.TabIndex = 3;
-            label17.Text = "Address";
+            lb_address5.AutoSize = true;
+            lb_address5.ForeColor = SystemColors.ActiveCaptionText;
+            lb_address5.Location = new Point(158, 100);
+            lb_address5.Name = "lb_address5";
+            lb_address5.Size = new Size(68, 20);
+            lb_address5.TabIndex = 3;
+            lb_address5.Text = "Address";
             // 
-            // label18
+            // lb_class5
             // 
-            label18.AutoSize = true;
-            label18.ForeColor = SystemColors.ActiveCaptionText;
-            label18.Location = new Point(158, 46);
-            label18.Name = "label18";
-            label18.Size = new Size(76, 20);
-            label18.TabIndex = 2;
-            label18.Text = "Class: 1A";
+            lb_class5.AutoSize = true;
+            lb_class5.ForeColor = SystemColors.ActiveCaptionText;
+            lb_class5.Location = new Point(158, 46);
+            lb_class5.Name = "lb_class5";
+            lb_class5.Size = new Size(76, 20);
+            lb_class5.TabIndex = 2;
+            lb_class5.Text = "Class: 1A";
             // 
-            // label19
+            // lb_name5
             // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label19.ForeColor = Color.Black;
-            label19.Location = new Point(14, 12);
-            label19.Name = "label19";
-            label19.Size = new Size(103, 19);
-            label19.TabIndex = 1;
-            label19.Text = "Donal Trump";
+            lb_name5.AutoSize = true;
+            lb_name5.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb_name5.ForeColor = Color.Black;
+            lb_name5.Location = new Point(14, 12);
+            lb_name5.Name = "lb_name5";
+            lb_name5.Size = new Size(103, 19);
+            lb_name5.TabIndex = 1;
+            lb_name5.Text = "Donal Trump";
             // 
             // pictureBox5
             // 
@@ -439,19 +454,20 @@
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
             // 
-            // panel5
+            // panel4
             // 
-            panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(textBox4);
-            panel5.Controls.Add(label14);
-            panel5.Controls.Add(label15);
-            panel5.Controls.Add(label16);
-            panel5.Controls.Add(pictureBox4);
-            panel5.ForeColor = SystemColors.ControlDark;
-            panel5.Location = new Point(39, 298);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(292, 246);
-            panel5.TabIndex = 5;
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(lb_id4);
+            panel4.Controls.Add(textBox4);
+            panel4.Controls.Add(lb_address4);
+            panel4.Controls.Add(lb_class4);
+            panel4.Controls.Add(lb_name4);
+            panel4.Controls.Add(pictureBox4);
+            panel4.ForeColor = SystemColors.ControlDark;
+            panel4.Location = new Point(39, 298);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(292, 246);
+            panel4.TabIndex = 5;
             // 
             // textBox4
             // 
@@ -466,36 +482,36 @@
             textBox4.TabIndex = 4;
             textBox4.Text = "Ngũ Hành Sơn, Đà Nẵng";
             // 
-            // label14
+            // lb_address4
             // 
-            label14.AutoSize = true;
-            label14.ForeColor = SystemColors.ActiveCaptionText;
-            label14.Location = new Point(158, 100);
-            label14.Name = "label14";
-            label14.Size = new Size(68, 20);
-            label14.TabIndex = 3;
-            label14.Text = "Address";
+            lb_address4.AutoSize = true;
+            lb_address4.ForeColor = SystemColors.ActiveCaptionText;
+            lb_address4.Location = new Point(158, 100);
+            lb_address4.Name = "lb_address4";
+            lb_address4.Size = new Size(68, 20);
+            lb_address4.TabIndex = 3;
+            lb_address4.Text = "Address";
             // 
-            // label15
+            // lb_class4
             // 
-            label15.AutoSize = true;
-            label15.ForeColor = SystemColors.ActiveCaptionText;
-            label15.Location = new Point(158, 46);
-            label15.Name = "label15";
-            label15.Size = new Size(76, 20);
-            label15.TabIndex = 2;
-            label15.Text = "Class: 1A";
+            lb_class4.AutoSize = true;
+            lb_class4.ForeColor = SystemColors.ActiveCaptionText;
+            lb_class4.Location = new Point(158, 46);
+            lb_class4.Name = "lb_class4";
+            lb_class4.Size = new Size(76, 20);
+            lb_class4.TabIndex = 2;
+            lb_class4.Text = "Class: 1A";
             // 
-            // label16
+            // lb_name4
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label16.ForeColor = Color.Black;
-            label16.Location = new Point(14, 12);
-            label16.Name = "label16";
-            label16.Size = new Size(103, 19);
-            label16.TabIndex = 1;
-            label16.Text = "Donal Trump";
+            lb_name4.AutoSize = true;
+            lb_name4.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb_name4.ForeColor = Color.Black;
+            lb_name4.Location = new Point(14, 12);
+            lb_name4.Name = "lb_name4";
+            lb_name4.Size = new Size(103, 19);
+            lb_name4.TabIndex = 1;
+            lb_name4.Text = "Donal Trump";
             // 
             // pictureBox4
             // 
@@ -507,19 +523,20 @@
             pictureBox4.TabIndex = 0;
             pictureBox4.TabStop = false;
             // 
-            // panel4
+            // panel3
             // 
-            panel4.BorderStyle = BorderStyle.FixedSingle;
-            panel4.Controls.Add(textBox3);
-            panel4.Controls.Add(label11);
-            panel4.Controls.Add(label12);
-            panel4.Controls.Add(label13);
-            panel4.Controls.Add(pictureBox3);
-            panel4.ForeColor = SystemColors.ControlDark;
-            panel4.Location = new Point(686, 27);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(292, 246);
-            panel4.TabIndex = 5;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(lb_id3);
+            panel3.Controls.Add(textBox3);
+            panel3.Controls.Add(lb_address3);
+            panel3.Controls.Add(lb_class3);
+            panel3.Controls.Add(lb_name3);
+            panel3.Controls.Add(pictureBox3);
+            panel3.ForeColor = SystemColors.ControlDark;
+            panel3.Location = new Point(686, 27);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(292, 246);
+            panel3.TabIndex = 5;
             // 
             // textBox3
             // 
@@ -534,36 +551,36 @@
             textBox3.TabIndex = 4;
             textBox3.Text = "Ngũ Hành Sơn, Đà Nẵng";
             // 
-            // label11
+            // lb_address3
             // 
-            label11.AutoSize = true;
-            label11.ForeColor = SystemColors.ActiveCaptionText;
-            label11.Location = new Point(158, 100);
-            label11.Name = "label11";
-            label11.Size = new Size(68, 20);
-            label11.TabIndex = 3;
-            label11.Text = "Address";
+            lb_address3.AutoSize = true;
+            lb_address3.ForeColor = SystemColors.ActiveCaptionText;
+            lb_address3.Location = new Point(158, 100);
+            lb_address3.Name = "lb_address3";
+            lb_address3.Size = new Size(68, 20);
+            lb_address3.TabIndex = 3;
+            lb_address3.Text = "Address";
             // 
-            // label12
+            // lb_class3
             // 
-            label12.AutoSize = true;
-            label12.ForeColor = SystemColors.ActiveCaptionText;
-            label12.Location = new Point(158, 46);
-            label12.Name = "label12";
-            label12.Size = new Size(76, 20);
-            label12.TabIndex = 2;
-            label12.Text = "Class: 1A";
+            lb_class3.AutoSize = true;
+            lb_class3.ForeColor = SystemColors.ActiveCaptionText;
+            lb_class3.Location = new Point(158, 46);
+            lb_class3.Name = "lb_class3";
+            lb_class3.Size = new Size(76, 20);
+            lb_class3.TabIndex = 2;
+            lb_class3.Text = "Class: 1A";
             // 
-            // label13
+            // lb_name3
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.Black;
-            label13.Location = new Point(14, 12);
-            label13.Name = "label13";
-            label13.Size = new Size(103, 19);
-            label13.TabIndex = 1;
-            label13.Text = "Donal Trump";
+            lb_name3.AutoSize = true;
+            lb_name3.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb_name3.ForeColor = Color.Black;
+            lb_name3.Location = new Point(14, 12);
+            lb_name3.Name = "lb_name3";
+            lb_name3.Size = new Size(103, 19);
+            lb_name3.TabIndex = 1;
+            lb_name3.Text = "Donal Trump";
             // 
             // pictureBox3
             // 
@@ -575,19 +592,20 @@
             pictureBox3.TabIndex = 0;
             pictureBox3.TabStop = false;
             // 
-            // panel3
+            // panel2
             // 
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(textBox2);
-            panel3.Controls.Add(label8);
-            panel3.Controls.Add(label9);
-            panel3.Controls.Add(label10);
-            panel3.Controls.Add(pictureBox2);
-            panel3.ForeColor = SystemColors.ControlDark;
-            panel3.Location = new Point(359, 27);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(292, 246);
-            panel3.TabIndex = 1;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(lb_id2);
+            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(lb_address2);
+            panel2.Controls.Add(lb_class2);
+            panel2.Controls.Add(lb_name2);
+            panel2.Controls.Add(pictureBox2);
+            panel2.ForeColor = SystemColors.ControlDark;
+            panel2.Location = new Point(359, 27);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(292, 246);
+            panel2.TabIndex = 1;
             // 
             // textBox2
             // 
@@ -602,36 +620,36 @@
             textBox2.TabIndex = 4;
             textBox2.Text = "Ngũ Hành Sơn, Đà Nẵng";
             // 
-            // label8
+            // lb_address2
             // 
-            label8.AutoSize = true;
-            label8.ForeColor = SystemColors.ActiveCaptionText;
-            label8.Location = new Point(158, 100);
-            label8.Name = "label8";
-            label8.Size = new Size(68, 20);
-            label8.TabIndex = 3;
-            label8.Text = "Address";
+            lb_address2.AutoSize = true;
+            lb_address2.ForeColor = SystemColors.ActiveCaptionText;
+            lb_address2.Location = new Point(158, 100);
+            lb_address2.Name = "lb_address2";
+            lb_address2.Size = new Size(68, 20);
+            lb_address2.TabIndex = 3;
+            lb_address2.Text = "Address";
             // 
-            // label9
+            // lb_class2
             // 
-            label9.AutoSize = true;
-            label9.ForeColor = SystemColors.ActiveCaptionText;
-            label9.Location = new Point(158, 46);
-            label9.Name = "label9";
-            label9.Size = new Size(76, 20);
-            label9.TabIndex = 2;
-            label9.Text = "Class: 1A";
+            lb_class2.AutoSize = true;
+            lb_class2.ForeColor = SystemColors.ActiveCaptionText;
+            lb_class2.Location = new Point(158, 46);
+            lb_class2.Name = "lb_class2";
+            lb_class2.Size = new Size(76, 20);
+            lb_class2.TabIndex = 2;
+            lb_class2.Text = "Class: 1A";
             // 
-            // label10
+            // lb_name2
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.ForeColor = Color.Black;
-            label10.Location = new Point(14, 12);
-            label10.Name = "label10";
-            label10.Size = new Size(103, 19);
-            label10.TabIndex = 1;
-            label10.Text = "Donal Trump";
+            lb_name2.AutoSize = true;
+            lb_name2.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb_name2.ForeColor = Color.Black;
+            lb_name2.Location = new Point(14, 12);
+            lb_name2.Name = "lb_name2";
+            lb_name2.Size = new Size(103, 19);
+            lb_name2.TabIndex = 1;
+            lb_name2.Text = "Donal Trump";
             // 
             // pictureBox2
             // 
@@ -643,19 +661,20 @@
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;
             // 
-            // panel2
+            // panel1
             // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(textBox1);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(pictureBox1);
-            panel2.ForeColor = SystemColors.ControlDark;
-            panel2.Location = new Point(39, 27);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(292, 246);
-            panel2.TabIndex = 0;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lb_id1);
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(lb_address1);
+            panel1.Controls.Add(lb_class1);
+            panel1.Controls.Add(lb_name1);
+            panel1.Controls.Add(pictureBox1);
+            panel1.ForeColor = SystemColors.ControlDark;
+            panel1.Location = new Point(39, 27);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(292, 246);
+            panel1.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -670,37 +689,37 @@
             textBox1.TabIndex = 4;
             textBox1.Text = "Ngũ Hành Sơn, Đà Nẵng";
             // 
-            // label7
+            // lb_address1
             // 
-            label7.AutoSize = true;
-            label7.ForeColor = SystemColors.ActiveCaptionText;
-            label7.Location = new Point(158, 100);
-            label7.Name = "label7";
-            label7.Size = new Size(68, 20);
-            label7.TabIndex = 3;
-            label7.Text = "Address";
+            lb_address1.AutoSize = true;
+            lb_address1.ForeColor = SystemColors.ActiveCaptionText;
+            lb_address1.Location = new Point(158, 100);
+            lb_address1.Name = "lb_address1";
+            lb_address1.Size = new Size(68, 20);
+            lb_address1.TabIndex = 3;
+            lb_address1.Text = "Address";
             // 
-            // label6
+            // lb_class1
             // 
-            label6.AutoSize = true;
-            label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(158, 46);
-            label6.Name = "label6";
-            label6.Size = new Size(76, 20);
-            label6.TabIndex = 2;
-            label6.Text = "Class: 1A";
-            label6.Click += label6_Click;
+            lb_class1.AutoSize = true;
+            lb_class1.ForeColor = SystemColors.ActiveCaptionText;
+            lb_class1.Location = new Point(158, 46);
+            lb_class1.Name = "lb_class1";
+            lb_class1.Size = new Size(76, 20);
+            lb_class1.TabIndex = 2;
+            lb_class1.Text = "Class: 1A";
+            lb_class1.Click += label6_Click;
             // 
-            // label5
+            // lb_name1
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(14, 12);
-            label5.Name = "label5";
-            label5.Size = new Size(103, 19);
-            label5.TabIndex = 1;
-            label5.Text = "Donal Trump";
+            lb_name1.AutoSize = true;
+            lb_name1.Font = new Font("Constantia", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lb_name1.ForeColor = Color.Black;
+            lb_name1.Location = new Point(14, 12);
+            lb_name1.Name = "lb_name1";
+            lb_name1.Size = new Size(103, 19);
+            lb_name1.TabIndex = 1;
+            lb_name1.Text = "Donal Trump";
             // 
             // pictureBox1
             // 
@@ -723,6 +742,76 @@
             tabControl1.Size = new Size(1041, 681);
             tabControl1.TabIndex = 13;
             // 
+            // lb_id1
+            // 
+            lb_id1.AutoSize = true;
+            lb_id1.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id1.Location = new Point(158, 73);
+            lb_id1.Name = "lb_id1";
+            lb_id1.Size = new Size(43, 20);
+            lb_id1.TabIndex = 5;
+            lb_id1.Text = "ID: 1";
+            // 
+            // lb_id2
+            // 
+            lb_id2.AutoSize = true;
+            lb_id2.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id2.Location = new Point(158, 73);
+            lb_id2.Name = "lb_id2";
+            lb_id2.Size = new Size(43, 20);
+            lb_id2.TabIndex = 6;
+            lb_id2.Text = "ID: 1";
+            // 
+            // lb_id3
+            // 
+            lb_id3.AutoSize = true;
+            lb_id3.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id3.Location = new Point(160, 74);
+            lb_id3.Name = "lb_id3";
+            lb_id3.Size = new Size(43, 20);
+            lb_id3.TabIndex = 5;
+            lb_id3.Text = "ID: 1";
+            // 
+            // lb_id4
+            // 
+            lb_id4.AutoSize = true;
+            lb_id4.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id4.Location = new Point(159, 73);
+            lb_id4.Name = "lb_id4";
+            lb_id4.Size = new Size(43, 20);
+            lb_id4.TabIndex = 5;
+            lb_id4.Text = "ID: 1";
+            // 
+            // lb_id5
+            // 
+            lb_id5.AutoSize = true;
+            lb_id5.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id5.Location = new Point(159, 71);
+            lb_id5.Name = "lb_id5";
+            lb_id5.Size = new Size(43, 20);
+            lb_id5.TabIndex = 5;
+            lb_id5.Text = "ID: 1";
+            // 
+            // lb_id6
+            // 
+            lb_id6.AutoSize = true;
+            lb_id6.ForeColor = SystemColors.ActiveCaptionText;
+            lb_id6.Location = new Point(161, 72);
+            lb_id6.Name = "lb_id6";
+            lb_id6.Size = new Size(43, 20);
+            lb_id6.TabIndex = 5;
+            lb_id6.Text = "ID: 1";
+            // 
+            // lb_count_page
+            // 
+            lb_count_page.AutoSize = true;
+            lb_count_page.ForeColor = Color.CornflowerBlue;
+            lb_count_page.Location = new Point(859, 600);
+            lb_count_page.Name = "lb_count_page";
+            lb_count_page.Size = new Size(18, 20);
+            lb_count_page.TabIndex = 8;
+            lb_count_page.Text = "1";
+            // 
             // Information
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
@@ -737,26 +826,27 @@
             Text = "Information";
             tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pb_avatar).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
             tabPage1.ResumeLayout(false);
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            tabPage1.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl1.ResumeLayout(false);
             ResumeLayout(false);
@@ -766,7 +856,7 @@
         private OpenFileDialog openFileDialog1;
         private TabPage tabPage2;
         private PictureBox pb_avatar;
-        private Panel panel1;
+        private Panel panel10;
         private RichTextBox tb_description;
         private Label label4;
         private TextBox add_username;
@@ -780,43 +870,50 @@
         private Button bt_addPicture;
         private TabPage tabPage1;
         private TabControl tabControl1;
-        private Panel panel2;
-        private Label label5;
+        private Panel panel1;
+        private Label lb_name1;
         private PictureBox pictureBox1;
-        private Label label6;
+        private Label lb_class1;
         private TextBox textBox1;
-        private Label label7;
-        private Panel panel7;
-        private TextBox textBox6;
-        private Label label20;
-        private Label label21;
-        private Label label22;
-        private PictureBox pictureBox6;
+        private Label lb_address1;
         private Panel panel6;
-        private TextBox textBox5;
-        private Label label17;
-        private Label label18;
-        private Label label19;
-        private PictureBox pictureBox5;
+        private TextBox textBox6;
+        private Label lb_address6;
+        private Label lb_class6;
+        private Label lb_name6;
+        private PictureBox pictureBox6;
         private Panel panel5;
-        private TextBox textBox4;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private PictureBox pictureBox4;
+        private TextBox textBox5;
+        private Label lb_address5;
+        private Label lb_class5;
+        private Label lb_name5;
+        private PictureBox pictureBox5;
         private Panel panel4;
-        private TextBox textBox3;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private PictureBox pictureBox3;
+        private TextBox textBox4;
+        private Label lb_address4;
+        private Label lb_class4;
+        private Label lb_name4;
+        private PictureBox pictureBox4;
         private Panel panel3;
+        private TextBox textBox3;
+        private Label lb_address3;
+        private Label lb_class3;
+        private Label lb_name3;
+        private PictureBox pictureBox3;
+        private Panel panel2;
         private TextBox textBox2;
-        private Label label8;
-        private Label label9;
-        private Label label10;
+        private Label lb_address2;
+        private Label lb_class2;
+        private Label lb_name2;
         private PictureBox pictureBox2;
-        private Button button2;
-        private Button button1;
+        private Button bt_previous;
+        private Button bt_next;
+        private Label lb_id6;
+        private Label lb_id5;
+        private Label lb_id4;
+        private Label lb_id3;
+        private Label lb_id2;
+        private Label lb_id1;
+        private Label lb_count_page;
     }
 }
