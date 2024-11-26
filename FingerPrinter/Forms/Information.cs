@@ -158,7 +158,7 @@ namespace FingerPrinter.Forms
                         ClearPanel();
                         while (reader.Read() && panelIndex < Pagesize)
                         {
-                            string id = reader["ID"].ToString();
+                            string id = reader["PrivateID"].ToString();
                             string name = reader["Name"].ToString();
                             string studentClass = reader["Class"].ToString();
                             string avatarPath = reader["AvatarPath"].ToString();
@@ -170,8 +170,9 @@ namespace FingerPrinter.Forms
 
                         // Enable or disable the "Next" button
                         bt_next.Enabled = panelIndex == Pagesize;
+                        lb_count_page.Text = (currentOffset+1).ToString();
                     }
-                }    
+                }
 
 
             }
@@ -179,10 +180,10 @@ namespace FingerPrinter.Forms
 
         private void ClearPanel()
         {
-            for(int i = 0; i< Pagesize; i++)
+            for (int i = 0; i < Pagesize; i++)
             {
                 var panel = this.Controls.Find($"panel{i + 1}", true)[0];
-                foreach(var control in panel.Controls)
+                foreach (var control in panel.Controls)
                 {
                     if (control is System.Windows.Forms.Label label)
                     {
@@ -192,7 +193,7 @@ namespace FingerPrinter.Forms
                     {
                         pictureBox.Image = null;
                     }
-                    if(control is System.Windows.Forms.TextBox textbox)
+                    if (control is System.Windows.Forms.TextBox textbox)
                     {
                         textbox.Text = "";
                     }
@@ -205,26 +206,30 @@ namespace FingerPrinter.Forms
             var panel = this.Controls.Find($"panel{index + 1}", true)[0];
             foreach (var control in panel.Controls)
             {
-                if(control is System.Windows.Forms.Label label)
+                if (control is System.Windows.Forms.Label label)
                 {
                     if (label.Name == $"lb_id{index + 1}")
                     {
-                        label.Text = id;
+                        label.Text = "ID: " + id;
                     }
-                    else if (label.Name == "lb_name")
+                    else if (label.Name == $"lb_name{index + 1}")
                     {
                         label.Text = name;
                     }
-                    else if (label.Name == "lb_class")
+                    else if (label.Name == $"lb_class{index + 1}")
                     {
-                        label.Text = studentClass;
+                        label.Text = "Class: " + studentClass;
                     }
-                } 
-                else if(control is PictureBox picturebox)
+                    else if (label.Name == $"lb_address{index + 1}")
+                    {
+                        label.Text = "Address";
+                    }
+                }
+                else if (control is PictureBox picturebox)
                 {
                     picturebox.Image = Image.FromFile(avatarPath);
                 }
-                else if(control is System.Windows.Forms.TextBox textbox)
+                else if (control is System.Windows.Forms.TextBox textbox)
                 {
                     textbox.Text = address;
                 }
@@ -232,8 +237,17 @@ namespace FingerPrinter.Forms
         }
         private void bt_next_Click(object sender, EventArgs e)
         {
-            currentOffset += Pagesize;
+            currentOffset += 1;
             LoadDataFromDatabase();
+        }
+
+        private void bt_previous_Click(object sender, EventArgs e)
+        {
+            if(currentOffset > 0)
+            {
+                currentOffset -= 1;
+                LoadDataFromDatabase();
+            }
         }
     }
 }

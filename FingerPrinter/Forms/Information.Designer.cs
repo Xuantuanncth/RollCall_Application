@@ -119,10 +119,10 @@
             tabPage2.Controls.Add(pb_avatar);
             tabPage2.Controls.Add(panel10);
             tabPage2.Controls.Add(bt_addPicture);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1033, 648);
+            tabPage2.Size = new Size(1033, 653);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Add user";
             tabPage2.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@
             panel10.Dock = DockStyle.Right;
             panel10.Location = new Point(409, 3);
             panel10.Name = "panel10";
-            panel10.Size = new Size(621, 642);
+            panel10.Size = new Size(621, 647);
             panel10.TabIndex = 12;
             // 
             // tb_description
@@ -312,6 +312,7 @@
             bt_previous.TabIndex = 7;
             bt_previous.Text = "Previous";
             bt_previous.UseVisualStyleBackColor = false;
+            bt_previous.Click += bt_previous_Click;
             // 
             // bt_next
             // 
