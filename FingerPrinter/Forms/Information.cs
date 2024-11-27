@@ -5,7 +5,9 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +17,11 @@ namespace FingerPrinter.Forms
 {
     public partial class Information : Form
     {
-        private string avatar_Path;
+
+        private string avatar_Path = string.Empty;
+        private int currentOffset = 0;
+        private const int Pagesize = 6;
+        private string student_db_path = Main.studentDatabase;
         public Information()
         {
             InitializeComponent();
@@ -41,7 +47,7 @@ namespace FingerPrinter.Forms
 
         public bool InsertDataIntoDatabase(string name, string student_id, string className, string fingerprintId, string avatarPath, string description)
         {
-            string connectionString = "Data Source=Student.db;Version=3;";
+            string connectionString = $"Data Source={student_db_path};Version=3;";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -80,6 +86,13 @@ namespace FingerPrinter.Forms
         private void add_finish_Click(object sender, EventArgs e)
         {
             bool isFillData = add_id.Text != string.Empty ? (add_class.Text != string.Empty ? (add_username.Text != string.Empty ? (tb_description.Text != string.Empty ? true : false) : false) : false) : false;
+
+            string internalFolder = Path.Combine(Application.StartupPath, "Avatars");
+            if (!Directory.Exists(internalFolder))
+            {
+                Directory.CreateDirectory(internalFolder);
+            }
+
             if (isFillData)
             {
                 string id = add_id.Text;
@@ -87,9 +100,20 @@ namespace FingerPrinter.Forms
                 string st_class = add_class.Text;
                 string st_discription = tb_description.Text;
                 string avatar_path = avatar_Path != string.Empty ? avatar_Path : Program.imagePath + "/avatar.png";
+                string fileName = Path.GetFileName(avatar_path);
+                string internalAvatarPath = Path.Combine(internalFolder, fileName);
 
+                try
+                {
+                    File.Copy(avatar_path, internalAvatarPath, overwrite: true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to copy avatar: {ex.Message}");
+                    return;
+                }
 
-                bool isInsertData = InsertDataIntoDatabase(name, id, st_class, "1", avatar_path, st_discription);
+                bool isInsertData = InsertDataIntoDatabase(name, id, st_class, "1", internalAvatarPath, st_discription);
                 if (isInsertData)
                 {
                     MessageBox.Show("Add data successfully");
@@ -118,42 +142,111 @@ namespace FingerPrinter.Forms
 
         public void LoadDataFromDatabase()
         {
-            string connectionString = "Data Source=Student.db;Version=3;";
+            string connectionString = $"Data Source={student_db_path};Version=3;";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
+                string query = $"SELECT * FROM Students LIMIT {Pagesize} OFFSET {currentOffset * Pagesize}";
 
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT * FROM Students", connection);
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        int panelIndex = 0;
 
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                        ClearPanel();
+                        while (reader.Read() && panelIndex < Pagesize)
+                        {
+                            string id = reader["PrivateID"].ToString();
+                            string name = reader["Name"].ToString();
+                            string studentClass = reader["Class"].ToString();
+                            string avatarPath = reader["AvatarPath"].ToString();
+                            string address = reader["Description"].ToString();
 
-                dataGridView1.DataSource = dataTable;
+                            LoadPanel(panelIndex, id, name, studentClass, avatarPath, address);
+                            panelIndex++;
+                        }
+
+                        // Enable or disable the "Next" button
+                        bt_next.Enabled = panelIndex == Pagesize;
+                        lb_count_page.Text = (currentOffset+1).ToString();
+                    }
+                }
+
+
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ClearPanel()
         {
-            if (e.RowIndex >= 0)
+            for (int i = 0; i < Pagesize; i++)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                var panel = this.Controls.Find($"panel{i + 1}", true)[0];
+                foreach (var control in panel.Controls)
+                {
+                    if (control is System.Windows.Forms.Label label)
+                    {
+                        label.Text = "";
+                    }
+                    if (control is PictureBox pictureBox)
+                    {
+                        pictureBox.Image = null;
+                    }
+                    if (control is System.Windows.Forms.TextBox textbox)
+                    {
+                        textbox.Text = "";
+                    }
+                }
+            }
+        }
 
+        private void LoadPanel(int index, string id, string name, string studentClass, string avatarPath, string address)
+        {
+            var panel = this.Controls.Find($"panel{index + 1}", true)[0];
+            foreach (var control in panel.Controls)
+            {
+                if (control is System.Windows.Forms.Label label)
+                {
+                    if (label.Name == $"lb_id{index + 1}")
+                    {
+                        label.Text = "ID: " + id;
+                    }
+                    else if (label.Name == $"lb_name{index + 1}")
+                    {
+                        label.Text = name;
+                    }
+                    else if (label.Name == $"lb_class{index + 1}")
+                    {
+                        label.Text = "Class: " + studentClass;
+                    }
+                    else if (label.Name == $"lb_address{index + 1}")
+                    {
+                        label.Text = "Address";
+                    }
+                }
+                else if (control is PictureBox picturebox)
+                {
+                    picturebox.Image = Image.FromFile(avatarPath);
+                }
+                else if (control is System.Windows.Forms.TextBox textbox)
+                {
+                    textbox.Text = address;
+                }
+            }
+        }
+        private void bt_next_Click(object sender, EventArgs e)
+        {
+            currentOffset += 1;
+            LoadDataFromDatabase();
+        }
 
-                // Access the desired columns
-                int id = Convert.ToInt32(row.Cells["Id"].Value);
-                string name = row.Cells["Name"].Value.ToString();
-                string className = row.Cells["Class"].Value.ToString();
-                string description = row.Cells["Description"].Value.ToString();
-                string avatar_info_path = row.Cells["AvatarPath"].Value.ToString();
-
-                // Do something with the retrieved data, e.g., display in a TextBox:
-                lb_infor_class.Text = className;
-                lb_info_name.Text = name;
-                lb_info_descripton.Text = description;
-                pb_infor_avatar.Image = Image.FromFile(avatar_info_path);
-                pb_infor_avatar.SizeMode = PictureBoxSizeMode.Zoom;
-
+        private void bt_previous_Click(object sender, EventArgs e)
+        {
+            if(currentOffset > 0)
+            {
+                currentOffset -= 1;
+                LoadDataFromDatabase();
             }
         }
     }

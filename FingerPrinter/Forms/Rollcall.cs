@@ -1,5 +1,6 @@
 using FingerPrinter.Forms;
 using FingerPrinter.Properties;
+using FingerPrinter.Services;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
@@ -8,22 +9,36 @@ namespace FingerPrinter
 {
     public partial class Main : Form
     {
+        private string databaseFolder = Path.Combine(Application.StartupPath, "Databases");
+        public static string? accountDatabase;
+        public static string? studentDatabase;
+        public static string? timeSheetDatabase;
         public Main()
         {
             InitializeComponent();
+            SerialManager.Instance.DataReceived += OnSerialDataReceived;
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            //string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            //string databasePath = Path.Combine(appDataPath, "Account.db");
-            //Debug.WriteLine("Database path: ",databasePath);
+            if (!Directory.Exists(databaseFolder))
+            {
+                Directory.CreateDirectory(databaseFolder);
+            }
+            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            accountDatabase = Path.Combine(databaseFolder, "Account.db");
+            studentDatabase = Path.Combine(databaseFolder, "Student.db");
+            Debug.WriteLine("Database path: ", accountDatabase);
 
-            //bool isDatabase = isDatatbaseExist(databasePath);
-            //if (!isDatabase)
-            //{
-            //    CreateTableIfNotExistsforAccountion();
-            //}
+            bool isDatabase = isDatatbaseExist(accountDatabase);
+            if (!isDatabase)
+            {
+                CreateTableIfNotExistsforAccountion(accountDatabase);
+            }
+            isDatabase = isDatatbaseExist(studentDatabase);
+            if(!isDatabase)
+            {
+                CreateTableIfNotExsitsforStudent(studentDatabase);
+            }
             //if (!Program.IsLoggedIn)
             //{
             //    Debug.WriteLine("This is debug");
@@ -32,19 +47,26 @@ namespace FingerPrinter
             //    statusOfDevice(false);
             //}
             statusOfDevice(false);
-            CreateTableIfNotExsitsforStudent();
+
             //DeleteTable("Students");
         }
-
+        private void OnSerialDataReceived(string data)
+        {
+            Invoke(new Action(() =>
+            {
+                //MessageBox.Show($"Data received in Form1: {data}");
+                Debug.WriteLine($"-----> Serial received data: {data}");
+            }));
+        }
         private bool isDatatbaseExist(string path)
         {
             return File.Exists(path);
         }
 
-        private void CreateTableIfNotExistsforAccountion()
+        private void CreateTableIfNotExistsforAccountion(string accountPath)
         {
 
-            string accountConnection = "Data Source=Account.db;Version=3;";
+            string accountConnection = $"Data Source={accountPath};Version=3;";
 
             using (SQLiteConnection connection = new SQLiteConnection(accountConnection))
             {
@@ -70,11 +92,12 @@ namespace FingerPrinter
             }
         }
 
-        private void CreateTableIfNotExsitsforStudent()
+        private void CreateTableIfNotExsitsforStudent(string studentPath)
         {
-            string studentConnection = "Data Source=Student.db;Version=3;";
+            string studentConnection = $"Data Source={studentPath};Version=3;";
 
-            using (SQLiteConnection connection = new SQLiteConnection(studentConnection)) {
+            using (SQLiteConnection connection = new SQLiteConnection(studentConnection))
+            {
                 connection.Open();
 
                 SQLiteCommand command = new SQLiteCommand(
@@ -94,7 +117,8 @@ namespace FingerPrinter
                     command.ExecuteNonQuery();
                     Debug.WriteLine("Table student created successfuly");
                 }
-                catch (SQLiteException ex) {
+                catch (SQLiteException ex)
+                {
                     Debug.WriteLine("Error create student: ", ex);
                 }
             }
@@ -142,7 +166,7 @@ namespace FingerPrinter
             if (isConnected)
             {
                 text_status.Text = "Connected";
-                 pb_status.Image = Image.FromFile(Program.imagePath+"/connected.png");
+                pb_status.Image = Image.FromFile(Program.imagePath + "/connected.png");
             }
             else
             {
@@ -154,7 +178,6 @@ namespace FingerPrinter
         {
             btn_addInfor.Enabled = isEnabled;
             btn_setting.Enabled = isEnabled;
-            btn_report.Enabled = isEnabled;
             btn_timesheet.Enabled = isEnabled;
             btn_timeoff.Enabled = isEnabled;
             btn_dashboard.Enabled = isEnabled;
@@ -202,5 +225,6 @@ namespace FingerPrinter
             dashboard_section.Dock = DockStyle.Fill;
             dashboard_section.Show();
         }
+
     }
 }

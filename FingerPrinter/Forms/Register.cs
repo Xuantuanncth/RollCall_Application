@@ -15,6 +15,7 @@ namespace FingerPrinter.Forms
 {
     public partial class Register : Form
     {
+        private string account_db_path = Main.accountDatabase;
         public Register()
         {
             InitializeComponent();
@@ -57,11 +58,12 @@ namespace FingerPrinter.Forms
             }
         }
 
-        private static bool InsertIntoDatabase(string name,
+        private bool InsertIntoDatabase(string name,
                                         string email,
                                         string passwordHashed)
         {
-            string connectionString = "Data Source=Account.db;Version=3;";
+            string connectionString = $"Data Source={account_db_path};Version=3;";
+
             using (SQLiteConnection connection = new SQLiteConnection(connectionString)) 
             { 
                 connection.Open();
