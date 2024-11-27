@@ -36,7 +36,6 @@
             label2 = new Label();
             btn_addInfor = new Button();
             btn_setting = new Button();
-            btn_report = new Button();
             btn_timeoff = new Button();
             btn_timesheet = new Button();
             btn_dashboard = new Button();
@@ -77,7 +76,6 @@
             panel4.Controls.Add(label2);
             panel4.Controls.Add(btn_addInfor);
             panel4.Controls.Add(btn_setting);
-            panel4.Controls.Add(btn_report);
             panel4.Controls.Add(btn_timeoff);
             panel4.Controls.Add(btn_timesheet);
             panel4.Controls.Add(btn_dashboard);
@@ -138,7 +136,7 @@
             btn_setting.FlatStyle = FlatStyle.Flat;
             btn_setting.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_setting.Image = (Image)resources.GetObject("btn_setting.Image");
-            btn_setting.Location = new Point(0, 709);
+            btn_setting.Location = new Point(0, 705);
             btn_setting.Name = "btn_setting";
             btn_setting.Size = new Size(206, 56);
             btn_setting.TabIndex = 5;
@@ -146,20 +144,6 @@
             btn_setting.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_setting.UseVisualStyleBackColor = true;
             btn_setting.Click += btn_setting_Click;
-            // 
-            // btn_report
-            // 
-            btn_report.FlatAppearance.BorderSize = 0;
-            btn_report.FlatStyle = FlatStyle.Flat;
-            btn_report.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_report.Image = (Image)resources.GetObject("btn_report.Image");
-            btn_report.Location = new Point(0, 349);
-            btn_report.Name = "btn_report";
-            btn_report.Size = new Size(206, 56);
-            btn_report.TabIndex = 4;
-            btn_report.Text = "   Report";
-            btn_report.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btn_report.UseVisualStyleBackColor = true;
             // 
             // btn_timeoff
             // 
@@ -351,7 +335,6 @@
         private Label label1;
         private Button button1;
         private Panel panel4;
-        private Button btn_report;
         private Button btn_timeoff;
         private Button btn_timesheet;
         private Button btn_dashboard;

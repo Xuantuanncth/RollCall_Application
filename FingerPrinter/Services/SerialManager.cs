@@ -12,9 +12,11 @@ namespace FingerPrinter.Services
         private static SerialManager? _instance;
         private SerialPort _serialPort;
         public SerialPort SerialPort => _serialPort;
+        public event Action<string> DataReceived;
 
         private SerialManager() { 
-            _serialPort = new SerialPort();
+            _serialPort = new SerialPort(); 
+            _serialPort.DataReceived += OnDataReceived;
         }
 
         public static SerialManager Instance
@@ -68,6 +70,19 @@ namespace FingerPrinter.Services
         public string[] GetAvailablePortNames()
         {
             return SerialPort.GetPortNames();
+        }
+
+        private void OnDataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                string data = _serialPort.ReadExisting();
+                DataReceived?.Invoke(data);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error reading serial data: " + ex.Message);
+            }
         }
     }
 }
