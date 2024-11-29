@@ -21,7 +21,7 @@ namespace FingerPrinter.Forms
         private string avatar_Path = string.Empty;
         private int currentOffset = 0;
         private const int Pagesize = 6;
-        private string student_db_path = Main.studentDatabase;
+        private string employee_db_path = Main.employeeDatabase;
         public Information()
         {
             InitializeComponent();
@@ -45,20 +45,19 @@ namespace FingerPrinter.Forms
         }
 
 
-        public bool InsertDataIntoDatabase(string name, string student_id, string className, string fingerprintId, string avatarPath, string description)
+        public bool InsertDataIntoDatabase(string name, string employee_id, string department, string avatarPath, string description)
         {
-            string connectionString = $"Data Source={student_db_path};Version=3;";
+            string connectionString = $"Data Source={employee_db_path};Version=3;";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
 
-                SQLiteCommand command = new SQLiteCommand("INSERT INTO Students (Name, PrivateID, Class, FingerprinterId, AvatarPath, Description) VALUES (@Name,@PrivateID, @Class, @FingerprinterId, @AvatarPath, @Description)", connection);
+                SQLiteCommand command = new SQLiteCommand("INSERT INTO Employees (Name, PrivateID, Department, AvatarPath, Description) VALUES (@Name,@PrivateID, @Department, @FingerprinterId, @AvatarPath, @Description)", connection);
 
                 command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@PrivateID", student_id);
-                command.Parameters.AddWithValue("@Class", className);
-                command.Parameters.AddWithValue("@FingerprinterId", fingerprintId);
+                command.Parameters.AddWithValue("@PrivateID", employee_id);
+                command.Parameters.AddWithValue("@Department", department);
                 command.Parameters.AddWithValue("@AvatarPath", avatarPath);
                 command.Parameters.AddWithValue("@Description", description);
 
@@ -97,7 +96,7 @@ namespace FingerPrinter.Forms
             {
                 string id = add_id.Text;
                 string name = add_username.Text;
-                string st_class = add_class.Text;
+                string st_department = add_class.Text;
                 string st_discription = tb_description.Text;
                 string avatar_path = avatar_Path != string.Empty ? avatar_Path : Program.imagePath + "/avatar.png";
                 string fileName = Path.GetFileName(avatar_path);
@@ -113,7 +112,7 @@ namespace FingerPrinter.Forms
                     return;
                 }
 
-                bool isInsertData = InsertDataIntoDatabase(name, id, st_class, "1", internalAvatarPath, st_discription);
+                bool isInsertData = InsertDataIntoDatabase(name, id, st_department, internalAvatarPath, st_discription);
                 if (isInsertData)
                 {
                     MessageBox.Show("Add data successfully");
@@ -142,12 +141,12 @@ namespace FingerPrinter.Forms
 
         public void LoadDataFromDatabase()
         {
-            string connectionString = $"Data Source={student_db_path};Version=3;";
+            string connectionString = $"Data Source={employee_db_path};Version=3;";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                string query = $"SELECT * FROM Students LIMIT {Pagesize} OFFSET {currentOffset * Pagesize}";
+                string query = $"SELECT * FROM employees LIMIT {Pagesize} OFFSET {currentOffset * Pagesize}";
 
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
@@ -160,17 +159,17 @@ namespace FingerPrinter.Forms
                         {
                             string id = reader["PrivateID"].ToString();
                             string name = reader["Name"].ToString();
-                            string studentClass = reader["Class"].ToString();
+                            string employeeClass = reader["Department"].ToString();
                             string avatarPath = reader["AvatarPath"].ToString();
                             string address = reader["Description"].ToString();
 
-                            LoadPanel(panelIndex, id, name, studentClass, avatarPath, address);
+                            LoadPanel(panelIndex, id, name, employeeClass, avatarPath, address);
                             panelIndex++;
                         }
 
                         // Enable or disable the "Next" button
                         bt_next.Enabled = panelIndex == Pagesize;
-                        lb_count_page.Text = (currentOffset+1).ToString();
+                        lb_count_page.Text = (currentOffset + 1).ToString();
                     }
                 }
 
@@ -201,7 +200,7 @@ namespace FingerPrinter.Forms
             }
         }
 
-        private void LoadPanel(int index, string id, string name, string studentClass, string avatarPath, string address)
+        private void LoadPanel(int index, string id, string name, string department, string avatarPath, string address)
         {
             var panel = this.Controls.Find($"panel{index + 1}", true)[0];
             foreach (var control in panel.Controls)
@@ -218,11 +217,11 @@ namespace FingerPrinter.Forms
                     }
                     else if (label.Name == $"lb_class{index + 1}")
                     {
-                        label.Text = "Class: " + studentClass;
+                        label.Text = "Department: " + department;
                     }
                     else if (label.Name == $"lb_address{index + 1}")
                     {
-                        label.Text = "Address";
+                        label.Text = "Information";
                     }
                 }
                 else if (control is PictureBox picturebox)
@@ -243,11 +242,16 @@ namespace FingerPrinter.Forms
 
         private void bt_previous_Click(object sender, EventArgs e)
         {
-            if(currentOffset > 0)
+            if (currentOffset > 0)
             {
                 currentOffset -= 1;
                 LoadDataFromDatabase();
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

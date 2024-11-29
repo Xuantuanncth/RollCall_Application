@@ -11,7 +11,7 @@ namespace FingerPrinter
     {
         private string databaseFolder = Path.Combine(Application.StartupPath, "Databases");
         public static string? accountDatabase;
-        public static string? studentDatabase;
+        public static string? employeeDatabase;
         public static string? timeSheetDatabase;
         public Main()
         {
@@ -26,7 +26,7 @@ namespace FingerPrinter
             }
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             accountDatabase = Path.Combine(databaseFolder, "Account.db");
-            studentDatabase = Path.Combine(databaseFolder, "Student.db");
+            employeeDatabase = Path.Combine(databaseFolder, "Employee.db");
             Debug.WriteLine("Database path: ", accountDatabase);
 
             bool isDatabase = isDatatbaseExist(accountDatabase);
@@ -34,10 +34,10 @@ namespace FingerPrinter
             {
                 CreateTableIfNotExistsforAccountion(accountDatabase);
             }
-            isDatabase = isDatatbaseExist(studentDatabase);
+            isDatabase = isDatatbaseExist(employeeDatabase);
             if(!isDatabase)
             {
-                CreateTableIfNotExsitsforStudent(studentDatabase);
+                CreateTableIfNotExsitsforemployee(employeeDatabase);
             }
             //if (!Program.IsLoggedIn)
             //{
@@ -48,7 +48,7 @@ namespace FingerPrinter
             //}
             statusOfDevice(false);
 
-            //DeleteTable("Students");
+            //DeleteTable("employees");
         }
         private void OnSerialDataReceived(string data)
         {
@@ -92,21 +92,20 @@ namespace FingerPrinter
             }
         }
 
-        private void CreateTableIfNotExsitsforStudent(string studentPath)
+        private void CreateTableIfNotExsitsforemployee(string employeePath)
         {
-            string studentConnection = $"Data Source={studentPath};Version=3;";
+            string employeeConnection = $"Data Source={employeePath};Version=3;";
 
-            using (SQLiteConnection connection = new SQLiteConnection(studentConnection))
+            using (SQLiteConnection connection = new SQLiteConnection(employeeConnection))
             {
                 connection.Open();
 
                 SQLiteCommand command = new SQLiteCommand(
-                    @"CREATE TABLE IF NOT EXISTS Students (
+                    @"CREATE TABLE IF NOT EXISTS Employees (
                      Id INTEGER PRIMARY KEY AUTOINCREMENT,
                      Name TEXT,
                      PrivateID TEXT,
-                     Class TEXT,
-                     FingerprinterId TEXT,
+                     Department TEXT,
                      AvatarPath TEXT,
                      Description TEXT
                     )", connection
@@ -115,18 +114,18 @@ namespace FingerPrinter
                 try
                 {
                     command.ExecuteNonQuery();
-                    Debug.WriteLine("Table student created successfuly");
+                    Debug.WriteLine("Table employee created successfuly");
                 }
                 catch (SQLiteException ex)
                 {
-                    Debug.WriteLine("Error create student: ", ex);
+                    Debug.WriteLine("Error create employee: ", ex);
                 }
             }
         }
 
-        public void DeleteTable(string tableName)
+        public void DeleteTable(string tableName, string employeePath)
         {
-            string connectionString = "Data Source=Student.db;Version=3;";
+            string connectionString = $"Data Source={employeePath};Version=3;";
 
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
