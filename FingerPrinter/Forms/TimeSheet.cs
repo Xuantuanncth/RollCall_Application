@@ -29,5 +29,10 @@ namespace FingerPrinter.Forms
                 //Load data form program
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

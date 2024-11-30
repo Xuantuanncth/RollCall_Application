@@ -53,7 +53,20 @@ namespace FingerPrinter.Forms
             {
                 connection.Open();
 
-                SQLiteCommand command = new SQLiteCommand("INSERT INTO Employees (Name, PrivateID, Department, AvatarPath, Description) VALUES (@Name,@PrivateID, @Department, @FingerprinterId, @AvatarPath, @Description)", connection);
+                SQLiteCommand command = new SQLiteCommand(
+                    "INSERT INTO Employees (" +
+                        "Name, " +
+                        "PrivateID, " +
+                        "Department, " +
+                        "AvatarPath, " +
+                        "Description) " +
+                    "VALUES (" +
+                        "@Name," +
+                        "@PrivateID, " +
+                        "@Department, " +
+                        "@AvatarPath, " +
+                        "@Description)", 
+                connection);
 
                 command.Parameters.AddWithValue("@Name", name);
                 command.Parameters.AddWithValue("@PrivateID", employee_id);

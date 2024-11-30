@@ -172,6 +172,7 @@
             btn_timesheet.Text = "   TimeSheet";
             btn_timesheet.TextImageRelation = TextImageRelation.ImageBeforeText;
             btn_timesheet.UseVisualStyleBackColor = true;
+            btn_timesheet.Click += btn_timesheet_Click;
             // 
             // btn_dashboard
             // 
