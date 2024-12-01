@@ -41,8 +41,8 @@ namespace FingerPrinter
             isDatabase = isDatatbaseExist(employeeDatabase);
             if (!isDatabase)
             {
+                CreateTableIfNotExsitsforemployee(employeeDatabase);
             }
-            CreateTableIfNotExsitsforemployee(employeeDatabase);
             //if (!Program.IsLoggedIn)
             //{
             //    Debug.WriteLine("This is debug");
@@ -52,7 +52,7 @@ namespace FingerPrinter
             //}
             statusOfDevice(false);
 
-            //DeleteTable("employees");
+            //DeleteTable("Timesheet",employeeDatabase);
         }
         private void OnSerialDataReceived(string data)
         {
@@ -61,27 +61,34 @@ namespace FingerPrinter
             {
                 //MessageBox.Show($"Data received in Form1: {data}");
                 Debug.WriteLine($"-----> Serial received data: {data}");
-
-                if (ParserDataAndInsertToDatabase(data, out _employee_id, out _date, out _time, out _type))
+                if (IsVaildData(data))
                 {
-                    if (InsertDataToDatabase(_employee_id, _date, _time, _type))
+                    if (ParserDataAndInsertToDatabase(data, out _employee_id, out _date, out _time, out _type))
                     {
-                        Debug.WriteLine("[OK]");
-                    }
-                    else
-                    {
-                        Debug.WriteLine("[Error]");
+                        if (InsertDataToDatabase(_employee_id, _date, _time, _type))
+                        {
+                            Debug.WriteLine("[OK]");
+                            SerialManager.Instance.SendCommand("OK");
+                        }
+                        else
+                        {
+                            Debug.WriteLine("[Error]");
+                            SerialManager.Instance.SendCommand("ERROR");
+                        }
                     }
                 }
             }));
         }
-
+        private bool IsVaildData(string data)
+        {
+            return data.StartsWith("*#") && data.EndsWith("#");
+        }
         private bool ParserDataAndInsertToDatabase(string dataString, out string employee_id, out string date, out string time, out string type)
         {
             /*
              * Data type: *#1_30/11/2023_8:22:30_IN_OK#
              */
-            dataString = dataString.Trim('#');
+            dataString = dataString.Substring(2,dataString.Length -3);
 
             // Split the string by '_' delimiter
             string[] dataParts = dataString.Split('_');
@@ -97,8 +104,10 @@ namespace FingerPrinter
             }
 
             employee_id = dataParts[0];
-            DateTime dateTime = DateTime.ParseExact(dataParts[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            date = dateTime.ToString("yyyy-MM-dd");
+            //Debug.WriteLine($"--> Data[0]: {employee_id}");
+            DateTime _date = DateTime.ParseExact(dataParts[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //DateTime _time = DateTime.ParseExact(dataParts[2], "HH:mm:ss", CultureInfo.InvariantCulture);
+            date = _date.ToString("yyyy-MM-dd");
             time = dataParts[2];
             type = dataParts[3] + "_" + dataParts[4]; // Combine the last two parts for the 'type'
 
@@ -121,22 +130,22 @@ namespace FingerPrinter
                         "@Type)",
                 connection);
 
-                command.Parameters.AddWithValue("EmployeePrivateID", emp_id);
-                command.Parameters.AddWithValue("Date", date);
-                command.Parameters.AddWithValue("Time", time);
-                command.Parameters.AddWithValue("Type", type);
+                command.Parameters.AddWithValue("@EmployeePrivateID", emp_id);
+                command.Parameters.AddWithValue("@Date", date);
+                command.Parameters.AddWithValue("@Time", time);
+                command.Parameters.AddWithValue("@Type", type);
 
                 try
                 {
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        Debug.WriteLine("Done added database");
+                        //Debug.WriteLine("Done added database");
                         isInsertData = true;
                     }
                     else
                     {
-                        Debug.WriteLine("Error when add database");
+                        //Debug.WriteLine("Error when add database");
                     }
                 }
                 catch (Exception ex)
@@ -231,8 +240,7 @@ namespace FingerPrinter
             {
                 connection.Open();
 
-                SQLiteCommand command = new SQLiteCommand($"DROP TABLE IF EXISTS {tableName}",
-         connection);
+                SQLiteCommand command = new SQLiteCommand($"DELETE FROM {tableName}", connection);
 
                 try
                 {
