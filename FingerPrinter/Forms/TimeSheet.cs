@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using OfficeOpenXml;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FingerPrinter.Forms
@@ -69,21 +70,21 @@ namespace FingerPrinter.Forms
 
                 using (SQLiteCommand command = new SQLiteCommand(custom_query, connection))
                 {
-                    if(mode == "search")
+                    if (mode == "search")
                     {
-                        if(is_selcet_id)
+                        if (is_selcet_id)
                         {
                             command.Parameters.AddWithValue("@ID", tb_s_id.Text);
                         }
-                        if(is_select_date)
+                        if (is_select_date)
                         {
                             command.Parameters.AddWithValue("@Date", monthCalendar1.SelectionStart.ToString("yyyy-MM-dd"));
                         }
-                        if(is_select_month)
+                        if (is_select_month)
                         {
                             command.Parameters.AddWithValue("@Month", value: cb_month.SelectedItem.ToString().PadLeft(2, '0')); // Ensure 2-digit month
                         }
-                        if(is_select_name)
+                        if (is_select_name)
                         {
                             command.Parameters.AddWithValue("@Name", "%" + tb_s_name.Text + "%");
                         }
@@ -105,6 +106,11 @@ namespace FingerPrinter.Forms
                         if (dataGridView1.Columns["Date"] != null)
                         {
                             dataGridView1.Columns["Date"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                        }
+                        dataGridView1.Columns["EmployeePrivateID"].HeaderText = "ID";
+                        foreach (DataGridViewColumn column in dataGridView1.Columns)
+                        {
+                            column.Width = 180;  
                         }
                     }
                 }
@@ -130,7 +136,7 @@ namespace FingerPrinter.Forms
             if (is_selcet_id)
             {
                 search_query += " AND Timesheet.EmployeePrivateID = @ID";
-            } 
+            }
             else if (is_select_date)
             {
                 search_query += " AND Timesheet.Date = @Date";
@@ -157,7 +163,7 @@ namespace FingerPrinter.Forms
 
         private void bt_s_month_Click(object sender, EventArgs e)
         {
-            if(is_select_date)
+            if (is_select_date)
             {
                 MessageBox.Show("Only date or month select in the time");
             }
@@ -178,7 +184,7 @@ namespace FingerPrinter.Forms
 
         private void bt_s_date_Click(object sender, EventArgs e)
         {
-            if(is_select_month)
+            if (is_select_month)
             {
                 MessageBox.Show("Only date or month select in the time");
             }
@@ -199,7 +205,7 @@ namespace FingerPrinter.Forms
 
         private void bt_s_name_Click(object sender, EventArgs e)
         {
-            if(is_selcet_id)
+            if (is_selcet_id)
             {
                 MessageBox.Show("Only name or id select in the time");
             }
@@ -220,7 +226,7 @@ namespace FingerPrinter.Forms
 
         private void bt_s_id_Click(object sender, EventArgs e)
         {
-            if(is_select_name)
+            if (is_select_name)
             {
                 MessageBox.Show("Only name or id select in the time");
             }
@@ -236,6 +242,53 @@ namespace FingerPrinter.Forms
                     is_selcet_id = true;
                     bt_s_id.BackColor = Color.FromArgb(143, 228, 143);
                 }
+            }
+        }
+        private void ExportDataGridViewToExcel(DataGridView dataGridView, string filePath)
+        {
+            OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            // Initialize the Excel package
+            using (ExcelPackage excel = new ExcelPackage())
+            {
+                // Create a worksheet
+                var worksheet = excel.Workbook.Worksheets.Add("Data");
+
+                // Add column headers
+                for (int col = 0; col < dataGridView.Columns.Count; col++)
+                {
+                    worksheet.Cells[1, col + 1].Value = dataGridView.Columns[col].HeaderText;
+                }
+
+                // Add row data
+                for (int row = 0; row < dataGridView.Rows.Count; row++)
+                {
+                    for (int col = 0; col < dataGridView.Columns.Count; col++)
+                    {
+                        // Avoid adding empty rows (if AllowUserToAddRows is true)
+                        if (dataGridView.Rows[row].IsNewRow) continue;
+
+                        worksheet.Cells[row + 2, col + 1].Value = dataGridView.Rows[row].Cells[col].Value;
+                    }
+                }
+
+                // Save the Excel file
+                FileInfo excelFile = new FileInfo(filePath);
+                excel.SaveAs(excelFile);
+
+                MessageBox.Show("Data exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void bt_export_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel Files|*.xlsx",
+                Title = "Save an Excel File"
+            };
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+                ExportDataGridViewToExcel(dataGridView1, filePath);
             }
         }
     }

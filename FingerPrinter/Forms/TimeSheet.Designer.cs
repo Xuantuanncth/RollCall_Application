@@ -48,6 +48,7 @@
             monthCalendar1 = new MonthCalendar();
             dataGridView1 = new DataGridView();
             tabPage2 = new TabPage();
+            openFileDialog1 = new OpenFileDialog();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -136,6 +137,7 @@
             bt_export.TabIndex = 12;
             bt_export.Text = "Export";
             bt_export.UseVisualStyleBackColor = true;
+            bt_export.Click += bt_export_Click;
             // 
             // bt_search
             // 
@@ -235,7 +237,8 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeight = 30;
             dataGridView1.Location = new Point(8, 183);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(1017, 446);
@@ -250,6 +253,10 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Report";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
             // 
             // TimeSheet
             // 
@@ -291,5 +298,6 @@
         private TextBox tb_s_date;
         private Label label3;
         private Button bt_s_month;
+        private OpenFileDialog openFileDialog1;
     }
 }
