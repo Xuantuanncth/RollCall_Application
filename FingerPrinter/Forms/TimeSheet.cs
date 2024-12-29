@@ -110,7 +110,7 @@ namespace FingerPrinter.Forms
                         dataGridView1.Columns["EmployeePrivateID"].HeaderText = "ID";
                         foreach (DataGridViewColumn column in dataGridView1.Columns)
                         {
-                            column.Width = 180;  
+                            column.Width = 200;  
                         }
                     }
                 }
