@@ -201,6 +201,7 @@
             bt_delete_database.TabIndex = 0;
             bt_delete_database.Text = "Delete";
             bt_delete_database.UseVisualStyleBackColor = true;
+            bt_delete_database.Click += bt_delete_database_Click;
             // 
             // Setting
             // 

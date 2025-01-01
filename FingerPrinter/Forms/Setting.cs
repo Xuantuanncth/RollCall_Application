@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace FingerPrinter.Forms
     public partial class Setting : Form
     {
         private string databaseFolder = Path.Combine(Application.StartupPath, "Databases");
+        private string employee_db_path = Main.employeeDatabase;
         public Setting()
         {
             string[] portNames = SerialManager.Instance.GetAvailablePortNames();
@@ -94,6 +96,31 @@ namespace FingerPrinter.Forms
             {
                 comboBox1.SelectedIndex = 0;
             }
+        }
+        public void DeleteTable(string tableName, string employeePath)
+        {
+            string connectionString = $"Data Source={employeePath};Version=3;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                SQLiteCommand command = new SQLiteCommand($"DELETE FROM {tableName}", connection);
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    Debug.WriteLine($"Table '{tableName}' deleted successfully.");
+                }
+                catch (SQLiteException ex)
+                {
+                    Debug.WriteLine($"Error deleting table: {ex.Message}");
+                }
+            }
+        }
+        private void bt_delete_database_Click(object sender, EventArgs e)
+        {
+            DeleteTable("Timesheet", employee_db_path);
         }
     }
 }

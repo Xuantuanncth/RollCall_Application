@@ -119,10 +119,10 @@
             tabPage2.Controls.Add(pb_avatar);
             tabPage2.Controls.Add(panel10);
             tabPage2.Controls.Add(bt_addPicture);
-            tabPage2.Location = new Point(4, 24);
+            tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1033, 653);
+            tabPage2.Size = new Size(1033, 648);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Add user";
             tabPage2.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@
             panel10.Dock = DockStyle.Right;
             panel10.Location = new Point(409, 3);
             panel10.Name = "panel10";
-            panel10.Size = new Size(621, 647);
+            panel10.Size = new Size(621, 642);
             panel10.TabIndex = 12;
             // 
             // tb_description
@@ -170,11 +170,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(147, 277);
+            label4.Location = new Point(142, 278);
             label4.Name = "label4";
-            label4.Size = new Size(68, 20);
+            label4.Size = new Size(90, 20);
             label4.TabIndex = 11;
-            label4.Text = "Address";
+            label4.Text = "Information";
             // 
             // add_username
             // 
@@ -244,18 +244,19 @@
             label3.AutoSize = true;
             label3.Location = new Point(142, 204);
             label3.Name = "label3";
-            label3.Size = new Size(48, 20);
+            label3.Size = new Size(94, 20);
             label3.TabIndex = 7;
-            label3.Text = "Class";
+            label3.Text = "Department";
+            label3.Click += label3_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(142, 131);
             label2.Name = "label2";
-            label2.Size = new Size(112, 20);
+            label2.Size = new Size(125, 20);
             label2.TabIndex = 6;
-            label2.Text = "Student Name";
+            label2.Text = "Employee Name";
             // 
             // bt_addPicture
             // 
@@ -371,9 +372,9 @@
             lb_address6.ForeColor = SystemColors.ActiveCaptionText;
             lb_address6.Location = new Point(158, 100);
             lb_address6.Name = "lb_address6";
-            lb_address6.Size = new Size(68, 20);
+            lb_address6.Size = new Size(90, 20);
             lb_address6.TabIndex = 3;
-            lb_address6.Text = "Address";
+            lb_address6.Text = "Information";
             // 
             // lb_class6
             // 
@@ -450,9 +451,9 @@
             lb_address5.ForeColor = SystemColors.ActiveCaptionText;
             lb_address5.Location = new Point(158, 100);
             lb_address5.Name = "lb_address5";
-            lb_address5.Size = new Size(68, 20);
+            lb_address5.Size = new Size(90, 20);
             lb_address5.TabIndex = 3;
-            lb_address5.Text = "Address";
+            lb_address5.Text = "Information";
             // 
             // lb_class5
             // 
@@ -527,11 +528,11 @@
             // 
             lb_address4.AutoSize = true;
             lb_address4.ForeColor = SystemColors.ActiveCaptionText;
-            lb_address4.Location = new Point(158, 100);
+            lb_address4.Location = new Point(158, 102);
             lb_address4.Name = "lb_address4";
-            lb_address4.Size = new Size(68, 20);
+            lb_address4.Size = new Size(90, 20);
             lb_address4.TabIndex = 3;
-            lb_address4.Text = "Address";
+            lb_address4.Text = "Information";
             // 
             // lb_class4
             // 
@@ -606,11 +607,11 @@
             // 
             lb_address3.AutoSize = true;
             lb_address3.ForeColor = SystemColors.ActiveCaptionText;
-            lb_address3.Location = new Point(158, 100);
+            lb_address3.Location = new Point(158, 105);
             lb_address3.Name = "lb_address3";
-            lb_address3.Size = new Size(68, 20);
+            lb_address3.Size = new Size(90, 20);
             lb_address3.TabIndex = 3;
-            lb_address3.Text = "Address";
+            lb_address3.Text = "Information";
             // 
             // lb_class3
             // 
@@ -685,11 +686,11 @@
             // 
             lb_address2.AutoSize = true;
             lb_address2.ForeColor = SystemColors.ActiveCaptionText;
-            lb_address2.Location = new Point(158, 100);
+            lb_address2.Location = new Point(158, 106);
             lb_address2.Name = "lb_address2";
-            lb_address2.Size = new Size(68, 20);
+            lb_address2.Size = new Size(90, 20);
             lb_address2.TabIndex = 3;
-            lb_address2.Text = "Address";
+            lb_address2.Text = "Information";
             // 
             // lb_class2
             // 
@@ -764,11 +765,11 @@
             // 
             lb_address1.AutoSize = true;
             lb_address1.ForeColor = SystemColors.ActiveCaptionText;
-            lb_address1.Location = new Point(158, 100);
+            lb_address1.Location = new Point(158, 106);
             lb_address1.Name = "lb_address1";
-            lb_address1.Size = new Size(68, 20);
+            lb_address1.Size = new Size(90, 20);
             lb_address1.TabIndex = 3;
-            lb_address1.Text = "Address";
+            lb_address1.Text = "Information";
             // 
             // lb_class1
             // 
@@ -776,9 +777,9 @@
             lb_class1.ForeColor = SystemColors.ActiveCaptionText;
             lb_class1.Location = new Point(158, 46);
             lb_class1.Name = "lb_class1";
-            lb_class1.Size = new Size(76, 20);
+            lb_class1.Size = new Size(102, 20);
             lb_class1.TabIndex = 2;
-            lb_class1.Text = "Class: 1A";
+            lb_class1.Text = "Department: ";
             // 
             // lb_name1
             // 
