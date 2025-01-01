@@ -50,6 +50,9 @@ FingerPrinter is a Windows Forms application designed to manage employee attenda
 ### Information Screen
 ![Information Screen](./image/information.png)
 
+### Timesheet Screen
+![Timesheet Screen](./image/timesheet.png)
+
 ## Usage
 
 ### Registering a New User
