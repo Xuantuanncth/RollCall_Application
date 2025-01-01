@@ -34,13 +34,13 @@
             lb_date = new Label();
             lb_day = new Label();
             panel2 = new Panel();
-            label2 = new Label();
+            lb_totalEmp = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel_main = new Panel();
             panel_3 = new Panel();
-            lb_status3 = new Label();
             lb_name3 = new Label();
+            lb_status3 = new Label();
             avatar_3 = new PictureBox();
             panel_2 = new Panel();
             lb_status2 = new Label();
@@ -104,7 +104,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(244, 246, 246);
-            panel2.Controls.Add(label2);
+            panel2.Controls.Add(lb_totalEmp);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(709, 12);
@@ -112,14 +112,14 @@
             panel2.Size = new Size(344, 170);
             panel2.TabIndex = 0;
             // 
-            // label2
+            // lb_totalEmp
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(71, 92);
-            label2.Name = "label2";
-            label2.Size = new Size(28, 21);
-            label2.TabIndex = 2;
-            label2.Text = "30";
+            lb_totalEmp.AutoSize = true;
+            lb_totalEmp.Location = new Point(71, 92);
+            lb_totalEmp.Name = "lb_totalEmp";
+            lb_totalEmp.Size = new Size(28, 21);
+            lb_totalEmp.TabIndex = 2;
+            lb_totalEmp.Text = "30";
             // 
             // label1
             // 
@@ -154,32 +154,32 @@
             // 
             // panel_3
             // 
-            panel_3.Controls.Add(lb_status3);
             panel_3.Controls.Add(lb_name3);
+            panel_3.Controls.Add(lb_status3);
             panel_3.Controls.Add(avatar_3);
             panel_3.Location = new Point(615, 123);
             panel_3.Name = "panel_3";
             panel_3.Size = new Size(200, 279);
             panel_3.TabIndex = 1;
             // 
-            // lb_status3
-            // 
-            lb_status3.AutoSize = true;
-            lb_status3.Location = new Point(71, 244);
-            lb_status3.Name = "lb_status3";
-            lb_status3.Size = new Size(57, 21);
-            lb_status3.TabIndex = 3;
-            lb_status3.Text = "label5";
-            // 
             // lb_name3
             // 
             lb_name3.AutoSize = true;
             lb_name3.Cursor = Cursors.No;
-            lb_name3.Location = new Point(58, 212);
+            lb_name3.Location = new Point(51, 212);
             lb_name3.Name = "lb_name3";
-            lb_name3.Size = new Size(57, 21);
+            lb_name3.Size = new Size(46, 21);
             lb_name3.TabIndex = 2;
-            lb_name3.Text = "label5";
+            lb_name3.Text = "Rose";
+            // 
+            // lb_status3
+            // 
+            lb_status3.AutoSize = true;
+            lb_status3.Location = new Point(51, 244);
+            lb_status3.Name = "lb_status3";
+            lb_status3.Size = new Size(58, 21);
+            lb_status3.TabIndex = 3;
+            lb_status3.Text = "IN_OK";
             // 
             // avatar_3
             // 
@@ -203,7 +203,7 @@
             // lb_status2
             // 
             lb_status2.AutoSize = true;
-            lb_status2.Location = new Point(63, 244);
+            lb_status2.Location = new Point(56, 244);
             lb_status2.Name = "lb_status2";
             lb_status2.Size = new Size(57, 21);
             lb_status2.TabIndex = 3;
@@ -213,7 +213,7 @@
             // 
             lb_name2.AutoSize = true;
             lb_name2.Cursor = Cursors.No;
-            lb_name2.Location = new Point(57, 212);
+            lb_name2.Location = new Point(56, 212);
             lb_name2.Name = "lb_name2";
             lb_name2.Size = new Size(57, 21);
             lb_name2.TabIndex = 2;
@@ -241,7 +241,7 @@
             // lb_status1
             // 
             lb_status1.AutoSize = true;
-            lb_status1.Location = new Point(69, 247);
+            lb_status1.Location = new Point(55, 244);
             lb_status1.Name = "lb_status1";
             lb_status1.Size = new Size(57, 21);
             lb_status1.TabIndex = 2;
@@ -249,13 +249,14 @@
             // 
             // lb_name1
             // 
-            lb_name1.AutoSize = true;
+            lb_name1.Anchor = AnchorStyles.None;
             lb_name1.Cursor = Cursors.No;
-            lb_name1.Location = new Point(61, 212);
+            lb_name1.Location = new Point(55, 212);
             lb_name1.Name = "lb_name1";
-            lb_name1.Size = new Size(57, 21);
+            lb_name1.Size = new Size(109, 22);
             lb_name1.TabIndex = 1;
-            lb_name1.Text = "label5";
+            lb_name1.Text = "Donal Trump";
+            lb_name1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // avatar_1
             // 
@@ -356,7 +357,7 @@
         private Panel panel_header;
         private Panel panel2;
         private PictureBox pictureBox1;
-        private Label label2;
+        private Label lb_totalEmp;
         private Label label1;
         private Label lb_date;
         private Label lb_day;

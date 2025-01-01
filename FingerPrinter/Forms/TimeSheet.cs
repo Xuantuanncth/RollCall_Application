@@ -88,6 +88,7 @@ namespace FingerPrinter.Forms
                         {
                             command.Parameters.AddWithValue("@Name", "%" + tb_s_name.Text + "%");
                         }
+                        Debug.WriteLine(command, "Comand: ");
                     }
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
                     {
@@ -137,22 +138,20 @@ namespace FingerPrinter.Forms
             {
                 search_query += " AND Timesheet.EmployeePrivateID = @ID";
             }
-            else if (is_select_date)
+            if (is_select_date)
             {
                 search_query += " AND Timesheet.Date = @Date";
             }
-            else if (is_select_month)
+            if (is_select_month)
             {
-                search_query += "AND strftime('%m', Timesheet.Date) = @Month";
+                search_query += " AND strftime('%m', Timesheet.Date) = @Month";
             }
-            else if (is_select_name)
+            if (is_select_name)
             {
                 search_query += " AND Employees.Name LIKE @Name";
             }
-            else
-            {
 
-            }
+            Debug.WriteLine($"Query: {search_query}");
             LoadDataFromDatabase(search_query, "search");
         }
 

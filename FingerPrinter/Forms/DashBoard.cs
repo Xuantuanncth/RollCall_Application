@@ -25,6 +25,7 @@ namespace FingerPrinter.Forms
             InitializeComponent();
             DisplayDateTime();
             InitializeDatabase();
+            GetTotalEmployeeCount();
             LoadDashboard();
         }
         private void DisplayDateTime()
@@ -43,6 +44,25 @@ namespace FingerPrinter.Forms
             connection.Open();
         }
 
+        private void GetTotalEmployeeCount()
+        {
+            int totalEmployees = 0;
+            try
+            {
+                string query = "SELECT COUNT(*) FROM Employees";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    // Execute the query and get the count
+                    totalEmployees = Convert.ToInt32(command.ExecuteScalar());
+                }
+
+                lb_totalEmp.Text = totalEmployees.ToString();
+            } 
+            catch(Exception e)
+            {
+                MessageBox.Show($"Error counting employees: {e.Message}");
+            }
+        }
         private void LoadDashboard()
         {
             string query = @"
@@ -84,7 +104,7 @@ namespace FingerPrinter.Forms
         {
             var panel = this.Controls.Find($"panel_{panelIndex}", true)[0];
             Debug.WriteLine(panelIndex, "PanelIndex: ");
-            foreach(var control in panel.Controls)
+            foreach (var control in panel.Controls)
             {
                 if (control is System.Windows.Forms.Label label)
                 {
@@ -112,7 +132,7 @@ namespace FingerPrinter.Forms
             }
             else
             {
-                panel.BackColor = SystemColors.Control; // Default background color
+                panel.BackColor = Color.FromArgb(235, 245, 251); // Default background color
             }
         }
         private void ClearPanel(int panelIndex)
@@ -153,5 +173,6 @@ namespace FingerPrinter.Forms
             currentPage++;
             LoadDashboard();
         }
+
     }
 }
