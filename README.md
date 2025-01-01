@@ -36,6 +36,20 @@ FingerPrinter is a Windows Forms application designed to manage employee attenda
 1. Set the startup project to `FingerPrinter`.
 2. Press `F5` to run the application.
 
+## Screenshots
+
+### Start Screen
+![Start Screen](./image/start.png)
+
+### Login Screen
+![Login Screen](./image/login.png)
+
+### Dashboard Screen
+![Dashboard Screen](./image/dashboard.png)
+
+### Information Screen
+![Information Screen](./image/information.png)
+
 ## Usage
 
 ### Registering a New User
