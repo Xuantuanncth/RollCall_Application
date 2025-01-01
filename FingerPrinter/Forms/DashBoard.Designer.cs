@@ -39,21 +39,21 @@
             pictureBox1 = new PictureBox();
             panel_main = new Panel();
             panel_3 = new Panel();
-            status_3 = new Label();
-            lb_name_3 = new Label();
+            lb_status3 = new Label();
+            lb_name3 = new Label();
             avatar_3 = new PictureBox();
             panel_2 = new Panel();
-            status_2 = new Label();
-            lb_name_2 = new Label();
+            lb_status2 = new Label();
+            lb_name2 = new Label();
             avatar_2 = new PictureBox();
             panel_1 = new Panel();
-            status_1 = new Label();
-            lb_name_1 = new Label();
+            lb_status1 = new Label();
+            lb_name1 = new Label();
             avatar_1 = new PictureBox();
             panel4 = new Panel();
             bt_back = new Button();
             panel5 = new Panel();
-            button1 = new Button();
+            bt_next = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             panel_header.SuspendLayout();
             panel2.SuspendLayout();
@@ -154,109 +154,115 @@
             // 
             // panel_3
             // 
-            panel_3.Controls.Add(status_3);
-            panel_3.Controls.Add(lb_name_3);
+            panel_3.Controls.Add(lb_status3);
+            panel_3.Controls.Add(lb_name3);
             panel_3.Controls.Add(avatar_3);
             panel_3.Location = new Point(615, 123);
             panel_3.Name = "panel_3";
             panel_3.Size = new Size(200, 279);
             panel_3.TabIndex = 1;
             // 
-            // status_3
+            // lb_status3
             // 
-            status_3.AutoSize = true;
-            status_3.Location = new Point(71, 244);
-            status_3.Name = "status_3";
-            status_3.Size = new Size(57, 21);
-            status_3.TabIndex = 3;
-            status_3.Text = "label5";
+            lb_status3.AutoSize = true;
+            lb_status3.Location = new Point(71, 244);
+            lb_status3.Name = "lb_status3";
+            lb_status3.Size = new Size(57, 21);
+            lb_status3.TabIndex = 3;
+            lb_status3.Text = "label5";
             // 
-            // lb_name_3
+            // lb_name3
             // 
-            lb_name_3.AutoSize = true;
-            lb_name_3.Location = new Point(71, 212);
-            lb_name_3.Name = "lb_name_3";
-            lb_name_3.Size = new Size(57, 21);
-            lb_name_3.TabIndex = 2;
-            lb_name_3.Text = "label5";
+            lb_name3.AutoSize = true;
+            lb_name3.Cursor = Cursors.No;
+            lb_name3.Location = new Point(58, 212);
+            lb_name3.Name = "lb_name3";
+            lb_name3.Size = new Size(57, 21);
+            lb_name3.TabIndex = 2;
+            lb_name3.Text = "label5";
             // 
             // avatar_3
             // 
             avatar_3.Location = new Point(0, 3);
             avatar_3.Name = "avatar_3";
             avatar_3.Size = new Size(197, 188);
+            avatar_3.SizeMode = PictureBoxSizeMode.Zoom;
             avatar_3.TabIndex = 1;
             avatar_3.TabStop = false;
             // 
             // panel_2
             // 
-            panel_2.Controls.Add(status_2);
-            panel_2.Controls.Add(lb_name_2);
+            panel_2.Controls.Add(lb_status2);
+            panel_2.Controls.Add(lb_name2);
             panel_2.Controls.Add(avatar_2);
             panel_2.Location = new Point(347, 123);
             panel_2.Name = "panel_2";
             panel_2.Size = new Size(200, 279);
             panel_2.TabIndex = 1;
             // 
-            // status_2
+            // lb_status2
             // 
-            status_2.AutoSize = true;
-            status_2.Location = new Point(63, 244);
-            status_2.Name = "status_2";
-            status_2.Size = new Size(57, 21);
-            status_2.TabIndex = 3;
-            status_2.Text = "label5";
+            lb_status2.AutoSize = true;
+            lb_status2.Location = new Point(63, 244);
+            lb_status2.Name = "lb_status2";
+            lb_status2.Size = new Size(57, 21);
+            lb_status2.TabIndex = 3;
+            lb_status2.Text = "label5";
             // 
-            // lb_name_2
+            // lb_name2
             // 
-            lb_name_2.AutoSize = true;
-            lb_name_2.Location = new Point(63, 212);
-            lb_name_2.Name = "lb_name_2";
-            lb_name_2.Size = new Size(57, 21);
-            lb_name_2.TabIndex = 2;
-            lb_name_2.Text = "label5";
+            lb_name2.AutoSize = true;
+            lb_name2.Cursor = Cursors.No;
+            lb_name2.Location = new Point(57, 212);
+            lb_name2.Name = "lb_name2";
+            lb_name2.Size = new Size(57, 21);
+            lb_name2.TabIndex = 2;
+            lb_name2.Text = "label5";
             // 
             // avatar_2
             // 
             avatar_2.Location = new Point(0, 3);
             avatar_2.Name = "avatar_2";
             avatar_2.Size = new Size(197, 188);
+            avatar_2.SizeMode = PictureBoxSizeMode.Zoom;
             avatar_2.TabIndex = 1;
             avatar_2.TabStop = false;
             // 
             // panel_1
             // 
-            panel_1.Controls.Add(status_1);
-            panel_1.Controls.Add(lb_name_1);
+            panel_1.Controls.Add(lb_status1);
+            panel_1.Controls.Add(lb_name1);
             panel_1.Controls.Add(avatar_1);
             panel_1.Location = new Point(97, 123);
             panel_1.Name = "panel_1";
             panel_1.Size = new Size(200, 279);
             panel_1.TabIndex = 0;
             // 
-            // status_1
+            // lb_status1
             // 
-            status_1.AutoSize = true;
-            status_1.Location = new Point(69, 247);
-            status_1.Name = "status_1";
-            status_1.Size = new Size(57, 21);
-            status_1.TabIndex = 2;
-            status_1.Text = "label5";
+            lb_status1.AutoSize = true;
+            lb_status1.Location = new Point(69, 247);
+            lb_status1.Name = "lb_status1";
+            lb_status1.Size = new Size(57, 21);
+            lb_status1.TabIndex = 2;
+            lb_status1.Text = "label5";
             // 
-            // lb_name_1
+            // lb_name1
             // 
-            lb_name_1.AutoSize = true;
-            lb_name_1.Location = new Point(69, 212);
-            lb_name_1.Name = "lb_name_1";
-            lb_name_1.Size = new Size(57, 21);
-            lb_name_1.TabIndex = 1;
-            lb_name_1.Text = "label5";
+            lb_name1.AutoSize = true;
+            lb_name1.Cursor = Cursors.No;
+            lb_name1.Location = new Point(61, 212);
+            lb_name1.Name = "lb_name1";
+            lb_name1.Size = new Size(57, 21);
+            lb_name1.TabIndex = 1;
+            lb_name1.Text = "label5";
             // 
             // avatar_1
             // 
             avatar_1.Location = new Point(3, 3);
             avatar_1.Name = "avatar_1";
             avatar_1.Size = new Size(197, 188);
+            avatar_1.SizeMode = PictureBoxSizeMode.Zoom;
             avatar_1.TabIndex = 0;
             avatar_1.TabStop = false;
             // 
@@ -285,25 +291,26 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(button1);
+            panel5.Controls.Add(bt_next);
             panel5.Dock = DockStyle.Right;
             panel5.Location = new Point(968, 198);
             panel5.Name = "panel5";
             panel5.Size = new Size(106, 483);
             panel5.TabIndex = 3;
             // 
-            // button1
+            // bt_next
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(106, 483);
-            button1.TabIndex = 0;
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
+            bt_next.Dock = DockStyle.Fill;
+            bt_next.FlatAppearance.BorderSize = 0;
+            bt_next.FlatStyle = FlatStyle.Flat;
+            bt_next.Image = (Image)resources.GetObject("bt_next.Image");
+            bt_next.Location = new Point(0, 0);
+            bt_next.Name = "bt_next";
+            bt_next.Size = new Size(106, 483);
+            bt_next.TabIndex = 0;
+            bt_next.TextImageRelation = TextImageRelation.ImageBeforeText;
+            bt_next.UseVisualStyleBackColor = true;
+            bt_next.Click += button1_Click;
             // 
             // timer1
             // 
@@ -357,18 +364,18 @@
         private Panel panel4;
         private Button bt_back;
         private Panel panel5;
-        private Button button1;
+        private Button bt_next;
         private Panel panel_3;
         private Panel panel_2;
         private Panel panel_1;
-        private Label status_3;
-        private Label lb_name_3;
+        private Label lb_status3;
+        private Label lb_name3;
         private PictureBox avatar_3;
-        private Label status_2;
-        private Label lb_name_2;
+        private Label lb_status2;
+        private Label lb_name2;
         private PictureBox avatar_2;
-        private Label status_1;
-        private Label lb_name_1;
+        private Label lb_status1;
+        private Label lb_name1;
         private PictureBox avatar_1;
         private System.Windows.Forms.Timer timer1;
     }
