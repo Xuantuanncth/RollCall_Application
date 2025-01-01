@@ -41,6 +41,8 @@
             label5 = new Label();
             tb_mail = new TextBox();
             ltb_back_login = new LinkLabel();
+            label6 = new Label();
+            cb_Role = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             btn_register.FlatAppearance.BorderSize = 0;
             btn_register.FlatStyle = FlatStyle.Flat;
             btn_register.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btn_register.Location = new Point(67, 550);
+            btn_register.Location = new Point(67, 625);
             btn_register.Name = "btn_register";
             btn_register.Size = new Size(401, 59);
             btn_register.TabIndex = 5;
@@ -166,7 +168,7 @@
             ltb_back_login.AutoSize = true;
             ltb_back_login.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ltb_back_login.LinkColor = Color.Gray;
-            ltb_back_login.Location = new Point(233, 636);
+            ltb_back_login.Location = new Point(233, 709);
             ltb_back_login.Name = "ltb_back_login";
             ltb_back_login.Size = new Size(64, 24);
             ltb_back_login.TabIndex = 6;
@@ -174,11 +176,35 @@
             ltb_back_login.Text = "Login";
             ltb_back_login.LinkClicked += ltb_back_login_Clicked;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(67, 533);
+            label6.Name = "label6";
+            label6.Size = new Size(56, 24);
+            label6.TabIndex = 21;
+            label6.Text = "Role";
+            // 
+            // cb_Role
+            // 
+            cb_Role.FlatStyle = FlatStyle.Flat;
+            cb_Role.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cb_Role.FormattingEnabled = true;
+            cb_Role.Items.AddRange(new object[] { "Admin", "User" });
+            cb_Role.Location = new Point(163, 532);
+            cb_Role.Name = "cb_Role";
+            cb_Role.Size = new Size(121, 30);
+            cb_Role.TabIndex = 22;
+            cb_Role.Text = "User";
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(550, 700);
+            ClientSize = new Size(550, 778);
+            Controls.Add(cb_Role);
+            Controls.Add(label6);
             Controls.Add(ltb_back_login);
             Controls.Add(label5);
             Controls.Add(tb_mail);
@@ -211,5 +237,7 @@
         private Label label5;
         private TextBox tb_mail;
         private LinkLabel ltb_back_login;
+        private Label label6;
+        private ComboBox cb_Role;
     }
 }

@@ -43,16 +43,14 @@ namespace FingerPrinter
             {
                 CreateTableIfNotExsitsforemployee(employeeDatabase);
             }
-            //if (!Program.IsLoggedIn)
-            //{
-            //    Debug.WriteLine("This is debug");
-            //    label_notification.Text = "Please Login :)";
-            //    SetControlsEnabled(false);
-            //    statusOfDevice(false);
-            //}
-            statusOfDevice(false);
+            if (!Program.IsLoggedIn)
+            {
+                Debug.WriteLine("This is debug");
+                label_notification.Text = "Please Login";
+                SetControlsEnabled(false);
+                statusOfDevice(false);
+            }
 
-            //DeleteTable("Timesheet",employeeDatabase);
         }
         private void OnSerialDataReceived(string data)
         {
@@ -175,7 +173,8 @@ namespace FingerPrinter
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     Name TEXT,
                     Email TEXT,
-                    PasswordHash TEXT
+                    PasswordHash TEXT,
+                    Role TEXT NOT NULL
                 )", connection);
 
                 try
@@ -257,7 +256,7 @@ namespace FingerPrinter
         {
             SetControlsEnabled(true);
             label_notification.Text = string.Empty;
-            btn_login.Enabled = false;
+            btn_login.Enabled = true;
             btn_login.Text = Program.LoggedInUser;
             btn_login.Image = null;
             Dashboard dashboard_section = new Dashboard();
@@ -297,8 +296,41 @@ namespace FingerPrinter
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            Login login_section = new Login();
-            login_section.Show();
+            if (Program.IsLoggedIn == false)
+            {
+                Login login_section = new Login();
+                login_section.Show();
+            }
+            else
+            {
+                Logout();
+            }
+        }
+        private void Logout()
+        {
+            DialogResult result = MessageBox.Show(
+                "Do you want to logout?",
+                "Logout Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Program.IsLoggedIn = false; // Set the isLogin variable to false
+                Program.isAdminLogin = false;
+                MessageBox.Show("You have successfully logged out.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                main_panel.Controls.Clear();
+                SetControlsEnabled(false);
+                statusOfDevice(false);
+                label_notification.Text = "Please login";
+                btn_login.Text = "Login";
+                main_panel.Controls.Add(label_notification);
+            }
+            else
+            {
+                // User clicked "No", do nothing
+            }
         }
 
         private void btn_addInfor_Click(object sender, EventArgs e)

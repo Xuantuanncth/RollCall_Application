@@ -19,6 +19,27 @@ namespace FingerPrinter.Forms
         public Register()
         {
             InitializeComponent();
+            if(Program.isAdminLogin == false)
+            {
+                cb_Role.Enabled = false;
+            }
+        }
+        private bool AdminExists()
+        {
+            string connectionString = $"Data Source={account_db_path};Version=3;";
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                SQLiteCommand command = new SQLiteCommand(
+                    "SELECT COUNT(*) FROM Users WHERE Role = 'Admin'",
+                    connection
+                );
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count > 0;
+            }
         }
 
         private void btn_register_Click(object sender, EventArgs e)
@@ -27,11 +48,16 @@ namespace FingerPrinter.Forms
             string email = tb_mail.Text;
             string password = tb_password.Text; 
             string confirm_password = tb_confirm_pass.Text;
+            string role = "User";
+            if (Program.isAdminLogin || !AdminExists())
+            {
+                role = cb_Role.SelectedItem?.ToString() ?? "User";
+            }           
 
             if (password == confirm_password) {
                 string password_hashed = hash_password(password);
 
-                bool isInsertDB = InsertIntoDatabase(name, email, password_hashed);
+                bool isInsertDB = InsertIntoDatabase(name, email, password_hashed, role);
                 if (isInsertDB)
                 {
                     MessageBox.Show("Register successful");
@@ -60,7 +86,8 @@ namespace FingerPrinter.Forms
 
         private bool InsertIntoDatabase(string name,
                                         string email,
-                                        string passwordHashed)
+                                        string passwordHashed,
+                                        string role)
         {
             string connectionString = $"Data Source={account_db_path};Version=3;";
 
@@ -68,11 +95,12 @@ namespace FingerPrinter.Forms
             { 
                 connection.Open();
 
-                SQLiteCommand command = new SQLiteCommand("INSERT INTO Users(Name, Email, PasswordHash) VALUES(@Name, @Email, @PasswordHash)", connection);
+                SQLiteCommand command = new SQLiteCommand("INSERT INTO Users(Name, Email, PasswordHash, Role) VALUES(@Name, @Email, @PasswordHash, @Role)", connection);
 
                 command.Parameters.AddWithValue("@Name", name);
                 command.Parameters.AddWithValue("@Email", email);
                 command.Parameters.AddWithValue("@PasswordHash", passwordHashed);
+                command.Parameters.AddWithValue("@Role", role);
 
                 try
                 {

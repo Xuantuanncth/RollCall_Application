@@ -22,6 +22,11 @@ namespace FingerPrinter.Forms
             string[] portNames = SerialManager.Instance.GetAvailablePortNames();
             InitializeComponent();
             cb_portName.Items.AddRange(portNames);
+            if(!Program.isAdminLogin)
+            {
+                bt_load_database.Enabled = false;
+                bt_delete_database.Enabled = false;
+            }
 
         }
 

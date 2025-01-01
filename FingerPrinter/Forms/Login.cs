@@ -75,10 +75,15 @@ namespace FingerPrinter.Forms
                 if (reader.Read())
                 {
                     string storedPasswordHash = reader["PasswordHash"].ToString();
+                    string role = reader["Role"].ToString();
 
                     // Verify password hash using a secure comparison method (e.g., constant-time comparison)
                     if (hash_password(password) == storedPasswordHash)
                     {
+                        if(role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                        {
+                            Program.isAdminLogin = true;
+                        }
                         return true; // Login successful
                     }
                 }

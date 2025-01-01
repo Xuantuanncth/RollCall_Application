@@ -23,6 +23,7 @@ namespace FingerPrinter
         public static bool IsLoggedIn = false;
         public static string? LoggedInUser;
         public static bool isConnectedDevice = false;
+        public static bool isAdminLogin = false;
         public static string imagePath = "../../../../icon";
 
     }
