@@ -26,7 +26,7 @@ FingerPrinter is a Windows Forms application designed to manage employee attenda
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/FingerPrinter.git
+    git clone https://github.com/Xuantuanncth/FingerPrinter.git
     ```
 2. Open the solution file `FingerPrinter.sln` in Visual Studio.
 3. Build the solution to restore the NuGet packages.
