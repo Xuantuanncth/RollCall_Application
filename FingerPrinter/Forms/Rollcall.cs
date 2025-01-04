@@ -63,10 +63,11 @@ namespace FingerPrinter
                 {
                     if (ParserDataAndInsertToDatabase(data, out _employee_id, out _date, out _time, out _type))
                     {
-                        if (InsertDataToDatabase(_employee_id, _date, _time, _type))
+                        var result = InsertDataToDatabase(_employee_id, _date, _time, _type);
+                        if (result.isInsertData)
                         {
-                            Debug.WriteLine("[OK]");
-                            SerialManager.Instance.SendCommand("OK");
+                            Debug.WriteLine($"---> Insert employee: {result.employeeName}");
+                            SerialManager.Instance.SendCommand(result.employeeName);
                         }
                         else
                         {
@@ -111,9 +112,10 @@ namespace FingerPrinter
 
             return true;
         }
-        private bool InsertDataToDatabase(string emp_id, string date, string time, string type)
+        private (bool isInsertData, string employeeName) InsertDataToDatabase(string emp_id, string date, string time, string type)
         {
             bool isInsertData = false;
+            string employeeName = "";
             string connectionString = $"Data Source={employeeDatabase};Version=3;";
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -140,6 +142,16 @@ namespace FingerPrinter
                     {
                         //Debug.WriteLine("Done added database");
                         isInsertData = true;
+                        SQLiteCommand fetchNameCommand = new SQLiteCommand(
+                             "SELECT Name FROM Employees WHERE PrivateID = @EmployeePrivateID",
+                        connection);
+
+                        fetchNameCommand.Parameters.AddWithValue("@EmployeePrivateID", emp_id);
+                        object result = fetchNameCommand.ExecuteScalar();
+                        if (result != null)
+                        {
+                            employeeName = result.ToString();
+                        }
                     }
                     else
                     {
@@ -152,7 +164,7 @@ namespace FingerPrinter
                 }
             }
 
-            return isInsertData;
+            return (isInsertData, employeeName);
         }
         private bool isDatatbaseExist(string path)
         {

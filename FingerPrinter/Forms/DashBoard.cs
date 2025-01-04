@@ -148,6 +148,7 @@ namespace FingerPrinter.Forms
                 {
                     pictureBox.Image = null;
                 }
+                panel.BackColor = Color.FromArgb(235, 245, 251); // Default background color
             }
         }
 
