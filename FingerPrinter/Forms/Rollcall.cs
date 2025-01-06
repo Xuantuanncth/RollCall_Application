@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
@@ -17,6 +18,7 @@ namespace FingerPrinter
         public static string? accountDatabase;
         public static string? employeeDatabase;
         public static string? timeSheetDatabase;
+        //private StringBuilder _receivedData = new StringBuilder();
         public Main()
         {
             InitializeComponent();
@@ -52,28 +54,68 @@ namespace FingerPrinter
             }
 
         }
+        private string serialBuffer = "";
         private void OnSerialDataReceived(string data)
         {
-            string _employee_id, _date, _time, _type;
             Invoke(new Action(() =>
             {
-                //MessageBox.Show($"Data received in Form1: {data}");
-                Debug.WriteLine($"-----> Serial received data: {data}");
-                if (IsVaildData(data))
+                Debug.WriteLine($"-----> Serial received data chunk: {data}");
+
+                // Append incoming data to the buffer
+                serialBuffer += data;
+
+                // Process all complete messages in the buffer
+                while (true)
                 {
-                    if (ParserDataAndInsertToDatabase(data, out _employee_id, out _date, out _time, out _type))
+                    int startIdx = serialBuffer.IndexOf("*#");
+                    if (startIdx == -1)
                     {
-                        var result = InsertDataToDatabase(_employee_id, _date, _time, _type);
-                        if (result.isInsertData)
+                        break;
+                    }
+                    int endIdx = serialBuffer.IndexOf("#", startIdx + 2);
+                    if (endIdx == -1)
+                    {
+                        break;
+                    }
+
+                    // If a complete message exists in the buffer
+                    if (startIdx != -1 && endIdx != -1)
+                    {
+                        string message = serialBuffer.Substring(startIdx, endIdx - startIdx + 1);
+
+                        // Remove the processed message from the buffer
+                        serialBuffer = serialBuffer.Substring(endIdx + 1);
+
+                        // Process the message
+                        if (IsVaildData(message))
                         {
-                            Debug.WriteLine($"---> Insert employee: {result.employeeName}");
-                            SerialManager.Instance.SendCommand(result.employeeName);
+                            Debug.WriteLine($"-----> Valid complete message: {message}");
+
+                            string _employee_id, _date, _time, _type;
+                            if (ParserDataAndInsertToDatabase(message, out _employee_id, out _date, out _time, out _type))
+                            {
+                                var result = InsertDataToDatabase(_employee_id, _date, _time, _type);
+                                if (result.isInsertData)
+                                {
+                                    Debug.WriteLine($"---> Insert employee: {result.employeeName}");
+                                    SerialManager.Instance.SendCommand(result.employeeName);
+                                }
+                                else
+                                {
+                                    Debug.WriteLine("[Error]");
+                                    SerialManager.Instance.SendCommand("ERROR");
+                                }
+                            }
                         }
                         else
                         {
-                            Debug.WriteLine("[Error]");
-                            SerialManager.Instance.SendCommand("ERROR");
+                            Debug.WriteLine($"-----> Invalid message discarded: {message}");
                         }
+                    }
+                    else
+                    {
+                        // No more complete messages in the buffer
+                        break;
                     }
                 }
             }));
@@ -82,6 +124,7 @@ namespace FingerPrinter
         {
             return data.StartsWith("*#") && data.EndsWith("#");
         }
+
         private bool ParserDataAndInsertToDatabase(string dataString, out string employee_id, out string date, out string time, out string type)
         {
             /*
