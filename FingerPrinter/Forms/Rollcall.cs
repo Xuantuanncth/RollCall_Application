@@ -98,7 +98,7 @@ namespace FingerPrinter
                                 if (result.isInsertData)
                                 {
                                     Debug.WriteLine($"---> Insert employee: {result.employeeName}");
-                                    SerialManager.Instance.SendCommand(result.employeeName);
+                                    SerialManager.Instance.SendCommand('*'+result.employeeName+'#');
                                 }
                                 else
                                 {
