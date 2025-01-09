@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using OfficeOpenXml;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using NLog;
 
 namespace FingerPrinter.Forms
 {
@@ -35,6 +36,9 @@ namespace FingerPrinter.Forms
                             Employees 
                         ON 
                             Timesheet.EmployeePrivateID = Employees.PrivateID";
+
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         public TimeSheet()
         {
             InitializeComponent();
@@ -88,12 +92,12 @@ namespace FingerPrinter.Forms
                         {
                             command.Parameters.AddWithValue("@Name", "%" + tb_s_name.Text + "%");
                         }
-                        Debug.WriteLine(command, "Comand: ");
+                        //Logger.Info(command, "Comand: ");
                     }
                     using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
-                        Debug.WriteLine("Data: ", dataTable);
+                        Logger.Info($"Data: {dataTable}");
                         adapter.Fill(dataTable);
 
 
@@ -151,7 +155,7 @@ namespace FingerPrinter.Forms
                 search_query += " AND Employees.Name LIKE @Name";
             }
 
-            Debug.WriteLine($"Query: {search_query}");
+            Logger.Info($"Query: {search_query}");
             LoadDataFromDatabase(search_query, "search");
         }
 

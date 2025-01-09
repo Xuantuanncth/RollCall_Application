@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using NLog;
 
 namespace FingerPrinter
 {
@@ -18,6 +19,8 @@ namespace FingerPrinter
         public static string? accountDatabase;
         public static string? employeeDatabase;
         public static string? timeSheetDatabase;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         //private StringBuilder _receivedData = new StringBuilder();
         public Main()
         {
@@ -33,7 +36,7 @@ namespace FingerPrinter
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             accountDatabase = Path.Combine(databaseFolder, "Account.db");
             employeeDatabase = Path.Combine(databaseFolder, "Employee.db");
-            Debug.WriteLine("Database path: ", accountDatabase);
+            Logger.Info("Database path: " + accountDatabase);
 
             bool isDatabase = isDatatbaseExist(accountDatabase);
             if (!isDatabase)
@@ -47,7 +50,7 @@ namespace FingerPrinter
             }
             if (!Program.IsLoggedIn)
             {
-                Debug.WriteLine("This is debug");
+                Logger.Info("This is debug");
                 label_notification.Text = "Please Login";
                 SetControlsEnabled(false);
                 statusOfDevice(false);
@@ -59,7 +62,7 @@ namespace FingerPrinter
         {
             Invoke(new Action(() =>
             {
-                Debug.WriteLine($"-----> Serial received data chunk: {data}");
+                Logger.Info($"-----> Serial received data chunk: {data}");
 
                 // Append incoming data to the buffer
                 serialBuffer += data;
@@ -89,7 +92,7 @@ namespace FingerPrinter
                         // Process the message
                         if (IsVaildData(message))
                         {
-                            Debug.WriteLine($"-----> Valid complete message: {message}");
+                            Logger.Info($"-----> Valid complete message: {message}");
 
                             string _employee_id, _date, _time, _type;
                             if (ParserDataAndInsertToDatabase(message, out _employee_id, out _date, out _time, out _type))
@@ -97,19 +100,19 @@ namespace FingerPrinter
                                 var result = InsertDataToDatabase(_employee_id, _date, _time, _type);
                                 if (result.isInsertData)
                                 {
-                                    Debug.WriteLine($"---> Insert employee: {result.employeeName}");
+                                    Logger.Info($"---> Insert employee: {result.employeeName}");
                                     SerialManager.Instance.SendCommand('*'+result.employeeName+'#');
                                 }
                                 else
                                 {
-                                    Debug.WriteLine("[Error]");
+                                    Logger.Info("[Error]");
                                     SerialManager.Instance.SendCommand("ERROR");
                                 }
                             }
                         }
                         else
                         {
-                            Debug.WriteLine($"-----> Invalid message discarded: {message}");
+                            Logger.Info($"-----> Invalid message discarded: {message}");
                         }
                     }
                     else
@@ -146,7 +149,7 @@ namespace FingerPrinter
             }
 
             employee_id = dataParts[0];
-            //Debug.WriteLine($"--> Data[0]: {employee_id}");
+            //Logger.Info($"--> Data[0]: {employee_id}");
             DateTime _date = DateTime.ParseExact(dataParts[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
             //DateTime _time = DateTime.ParseExact(dataParts[2], "HH:mm:ss", CultureInfo.InvariantCulture);
             date = _date.ToString("yyyy-MM-dd");
@@ -183,7 +186,7 @@ namespace FingerPrinter
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        //Debug.WriteLine("Done added database");
+                        //Logger.Info("Done added database");
                         isInsertData = true;
                         SQLiteCommand fetchNameCommand = new SQLiteCommand(
                              "SELECT Name FROM Employees WHERE PrivateID = @EmployeePrivateID",
@@ -198,12 +201,12 @@ namespace FingerPrinter
                     }
                     else
                     {
-                        //Debug.WriteLine("Error when add database");
+                        //Logger.Info("Error when add database");
                     }
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("Cannot insert database: ", ex);
+                    Logger.Info("Cannot insert database: " + ex);
                 }
             }
 
@@ -235,11 +238,11 @@ namespace FingerPrinter
                 try
                 {
                     command.ExecuteNonQuery();
-                    Debug.WriteLine("Table created successfully.");
+                    Logger.Info("Table created successfully.");
                 }
                 catch (SQLiteException ex)
                 {
-                    Debug.WriteLine("Error creating table: " + ex.Message);
+                    Logger.Info("Error creating table: " + ex.Message);
                 }
             }
         }
@@ -277,11 +280,11 @@ namespace FingerPrinter
                 {
                     command.ExecuteNonQuery();
                     timeSheetCommand.ExecuteNonQuery();
-                    Debug.WriteLine("------------> Table employee created successfuly");
+                    Logger.Info("------------> Table employee created successfuly");
                 }
                 catch (SQLiteException ex)
                 {
-                    Debug.WriteLine("Error create employee: ", ex);
+                    Logger.Info("Error create employee: " + ex);
                 }
             }
         }
@@ -299,11 +302,11 @@ namespace FingerPrinter
                 try
                 {
                     command.ExecuteNonQuery();
-                    Debug.WriteLine($"Table '{tableName}' deleted successfully.");
+                    Logger.Info($"Table '{tableName}' deleted successfully.");
                 }
                 catch (SQLiteException ex)
                 {
-                    Debug.WriteLine($"Error deleting table: {ex.Message}");
+                    Logger.Info($"Error deleting table: {ex.Message}");
                 }
             }
         }

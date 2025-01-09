@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace FingerPrinter.Forms
 {
@@ -17,6 +18,7 @@ namespace FingerPrinter.Forms
     {
         private string databaseFolder = Path.Combine(Application.StartupPath, "Databases");
         private string employee_db_path = Main.employeeDatabase;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public Setting()
         {
             string[] portNames = SerialManager.Instance.GetAvailablePortNames();
@@ -62,7 +64,7 @@ namespace FingerPrinter.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("Cannot connect the Serial Port");
-                Debug.WriteLine("Error: ", ex);
+                Logger.Info("Error: ", ex);
             }
         }
 
@@ -115,11 +117,11 @@ namespace FingerPrinter.Forms
                 try
                 {
                     command.ExecuteNonQuery();
-                    Debug.WriteLine($"Table '{tableName}' deleted successfully.");
+                    Logger.Info($"Table '{tableName}' deleted successfully.");
                 }
                 catch (SQLiteException ex)
                 {
-                    Debug.WriteLine($"Error deleting table: {ex.Message}");
+                    Logger.Info($"Error deleting table: {ex.Message}");
                 }
             }
         }

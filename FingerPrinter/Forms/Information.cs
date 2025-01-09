@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using NLog;
 
 namespace FingerPrinter.Forms
 {
@@ -22,6 +23,7 @@ namespace FingerPrinter.Forms
         private int currentOffset = 0;
         private const int Pagesize = 6;
         private string employee_db_path = Main.employeeDatabase;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public Information()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace FingerPrinter.Forms
                 pb_avatar.SizeMode = PictureBoxSizeMode.Zoom;
                 avatar_Path = ofd.FileName;
             }
-            Debug.WriteLine("Path of avatar: ", ofd.FileName);
+           Logger.Info("Path of avatar: " + ofd.FileName);
         }
 
 
@@ -79,18 +81,18 @@ namespace FingerPrinter.Forms
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        Debug.WriteLine("Data inserted successfully!");
+                        Logger.Info("Data inserted successfully!");
                         return true;
                     }
                     else
                     {
-                        Debug.WriteLine("Error inserting data.");
+                        Logger.Info("Error inserting data.");
                         return false;
                     }
                 }
                 catch (SQLiteException ex)
                 {
-                    Debug.WriteLine("Error: " + ex.Message);
+                    Logger.Info("Error: " + ex.Message);
                     return false;
                 }
             }

@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace FingerPrinter.Forms
 {
@@ -20,7 +21,10 @@ namespace FingerPrinter.Forms
         private int currentPage = 0;
         private const int pageSize = 3;
         private SQLiteConnection connection;
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         public Dashboard()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
             InitializeComponent();
             DisplayDateTime();
@@ -81,9 +85,9 @@ namespace FingerPrinter.Forms
                     int panelIndex = 1;
                     while (reader.Read())
                     {
-                        string name = reader["Name"]?.ToString();
-                        string avatarPath = reader["AvatarPath"]?.ToString();
-                        string type = reader["Type"]?.ToString();
+                        string ? name = reader["Name"]?.ToString();
+                        string ? avatarPath = reader["AvatarPath"]?.ToString();
+                        string ? type = reader["Type"]?.ToString();
 
                         // Load data into panel components
                         UpdatePanel(panelIndex, name, avatarPath, type);
@@ -103,7 +107,7 @@ namespace FingerPrinter.Forms
         private void UpdatePanel(int panelIndex, string name, string avatarPath, string type)
         {
             var panel = this.Controls.Find($"panel_{panelIndex}", true)[0];
-            Debug.WriteLine(panelIndex, "PanelIndex: ");
+            Logger.Info("PanelIndex: "+panelIndex);
             foreach (var control in panel.Controls)
             {
                 if (control is System.Windows.Forms.Label label)
