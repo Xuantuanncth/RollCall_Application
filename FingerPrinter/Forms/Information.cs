@@ -206,6 +206,7 @@ namespace FingerPrinter.Forms
                     if (control is PictureBox pictureBox)
                     {
                         pictureBox.Image = null;
+                        pictureBox.Tag = null;
                     }
                     if (control is System.Windows.Forms.TextBox textbox)
                     {
@@ -246,7 +247,10 @@ namespace FingerPrinter.Forms
                 }
                 else if (control is PictureBox picturebox)
                 {
-                    picturebox.Image = Image.FromFile(avatarPath);
+                    using (var stream = new MemoryStream(File.ReadAllBytes(avatarPath)))
+                    {
+                        picturebox.Image = Image.FromStream(stream);
+                    }
                     picturebox.Tag = avatarPath;
                 }
                 else if (control is System.Windows.Forms.TextBox textbox)
@@ -304,7 +308,6 @@ namespace FingerPrinter.Forms
                 try
                 {
                     File.Delete(avatarPath);
-                    MessageBox.Show("Avatar deleted successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
