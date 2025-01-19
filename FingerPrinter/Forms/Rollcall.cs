@@ -62,7 +62,7 @@ namespace FingerPrinter
         {
             Invoke(new Action(() =>
             {
-                Logger.Info($"-----> Serial received data chunk: {data}");
+                Debug.WriteLine($"-----> Serial received data chunk: {data}");
 
                 // Append incoming data to the buffer
                 serialBuffer += data;
@@ -92,16 +92,15 @@ namespace FingerPrinter
                         // Process the message
                         if (IsVaildData(message))
                         {
-                            Logger.Info($"-----> Valid complete message: {message}");
-
+                            Debug.WriteLine($"-----> Valid complete message: {message}");
                             string _employee_id, _date, _time, _type;
                             if (ParserDataAndInsertToDatabase(message, out _employee_id, out _date, out _time, out _type))
                             {
                                 var result = InsertDataToDatabase(_employee_id, _date, _time, _type);
                                 if (result.isInsertData)
                                 {
-                                    Logger.Info($"---> Insert employee: {result.employeeName}");
-                                    SerialManager.Instance.SendCommand('*'+result.employeeName+'#');
+                                    Debug.WriteLine($"---> Insert employee: {result.employeeName}");
+                                    SerialManager.Instance.SendCommand('*' + result.employeeName + '#');
                                 }
                                 else
                                 {
@@ -133,7 +132,7 @@ namespace FingerPrinter
             /*
              * Data type: *#1_30/11/2023_8:22:30_IN_OK#
              */
-            dataString = dataString.Substring(2,dataString.Length -3);
+            dataString = dataString.Substring(2, dataString.Length - 3);
 
             // Split the string by '_' delimiter
             string[] dataParts = dataString.Split('_');
@@ -273,7 +272,7 @@ namespace FingerPrinter
                         Date DATE,
                         Time TIME,
                         Type TEXT,
-                        FOREIGN KEY (EmployeePrivateID) REFERENCES Employees(PrivateID)
+                        FOREIGN KEY (EmployeePrivateID) REFERENCES Employees(PrivateID) ON DELETE CASCADE
                     )", connection
                 );
                 try
@@ -433,6 +432,11 @@ namespace FingerPrinter
             main_panel.Controls.Add(timesheet_section);
             timesheet_section.Dock = DockStyle.Fill;
             timesheet_section.Show();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

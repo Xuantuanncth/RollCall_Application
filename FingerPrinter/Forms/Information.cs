@@ -43,7 +43,7 @@ namespace FingerPrinter.Forms
                 pb_avatar.SizeMode = PictureBoxSizeMode.Zoom;
                 avatar_Path = ofd.FileName;
             }
-           Logger.Info("Path of avatar: " + ofd.FileName);
+            Logger.Info("Path of avatar: " + ofd.FileName);
         }
 
 
@@ -67,7 +67,7 @@ namespace FingerPrinter.Forms
                         "@PrivateID, " +
                         "@Department, " +
                         "@AvatarPath, " +
-                        "@Description)", 
+                        "@Description)",
                 connection);
 
                 command.Parameters.AddWithValue("@Name", name);
@@ -211,6 +211,11 @@ namespace FingerPrinter.Forms
                     {
                         textbox.Text = "";
                     }
+                    if (control is System.Windows.Forms.Button button)
+                    {
+                        button.Visible = false;
+                        button.Enabled = false;
+                    }
                 }
             }
         }
@@ -242,10 +247,16 @@ namespace FingerPrinter.Forms
                 else if (control is PictureBox picturebox)
                 {
                     picturebox.Image = Image.FromFile(avatarPath);
+                    picturebox.Tag = avatarPath;
                 }
                 else if (control is System.Windows.Forms.TextBox textbox)
                 {
                     textbox.Text = address;
+                }
+                else if (control is System.Windows.Forms.Button button)
+                {
+                    button.Visible = true;
+                    button.Enabled = true;
                 }
             }
         }
@@ -263,10 +274,119 @@ namespace FingerPrinter.Forms
                 LoadDataFromDatabase();
             }
         }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            int empID = int.Parse(lb_id1.Text.Split(' ')[1]);
+            string avt_path = pictureBox1.Tag?.ToString();
+            Debug.Write($"ID: {empID}");
+            DeleteEmployee(empID, avt_path);
+        }
 
+        private void DeleteEmployee(int employeeId, string avatar_path)
+        {
+            var confirmResult = MessageBox.Show(
+                "Do you want to delete it?",
+                "Confirm",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                ExecuteDeleteEmployee(employeeId.ToString());
+                DeleteAvatarFromPictureBox(avatar_path);
+            }
+        }
+
+        private void DeleteAvatarFromPictureBox(string avatarPath)
+        {
+            if (!string.IsNullOrEmpty(avatarPath) && File.Exists(avatarPath))
+            {
+                try
+                {
+                    File.Delete(avatarPath);
+                    MessageBox.Show("Avatar deleted successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to delete avatar: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Avatar file not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExecuteDeleteEmployee(string privateId)
+        {
+            string connectionString = $"Data Source={employee_db_path};Version=3;";
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                try
+                {
+                    // Delete the employee from the Employees table
+                    string deleteEmployeeQuery = "DELETE FROM Employees WHERE PrivateID = @PrivateID";
+                    using (var cmd = new SQLiteCommand(deleteEmployeeQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@PrivateID", privateId);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Employee deleted successfully!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            currentOffset = 0;
+                            LoadDataFromDatabase();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Employee not found for deletion.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting employee: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int empID = int.Parse(lb_id2.Text.Split(' ')[1]);
+            string avt_path = pictureBox2.Tag?.ToString();
+            DeleteEmployee(empID, avt_path);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int empID = int.Parse(lb_id3.Text.Split(' ')[1]);
+            string avt_path = pictureBox3.Tag?.ToString();
+            DeleteEmployee(empID, avt_path);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int empID = int.Parse(lb_id4.Text.Split(' ')[1]);
+            string avt_path = pictureBox4.Tag?.ToString();
+            DeleteEmployee(empID, avt_path);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int empID = int.Parse(lb_id5.Text.Split(' ')[1]);
+            string avt_path = pictureBox5.Tag?.ToString();
+            DeleteEmployee(empID, avt_path);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int empID = int.Parse(lb_id6.Text.Split(' ')[1]);
+            string avt_path = pictureBox6.Tag?.ToString();
+            DeleteEmployee(empID, avt_path);
         }
     }
 }

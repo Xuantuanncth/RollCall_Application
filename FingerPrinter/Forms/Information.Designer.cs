@@ -49,6 +49,7 @@
             bt_previous = new Button();
             bt_next = new Button();
             panel6 = new Panel();
+            button6 = new Button();
             lb_id6 = new Label();
             textBox6 = new TextBox();
             lb_address6 = new Label();
@@ -56,6 +57,7 @@
             lb_name6 = new Label();
             pictureBox6 = new PictureBox();
             panel5 = new Panel();
+            button5 = new Button();
             lb_id5 = new Label();
             textBox5 = new TextBox();
             lb_address5 = new Label();
@@ -63,6 +65,7 @@
             lb_name5 = new Label();
             pictureBox5 = new PictureBox();
             panel4 = new Panel();
+            button4 = new Button();
             lb_id4 = new Label();
             textBox4 = new TextBox();
             lb_address4 = new Label();
@@ -70,6 +73,7 @@
             lb_name4 = new Label();
             pictureBox4 = new PictureBox();
             panel3 = new Panel();
+            button3 = new Button();
             lb_id3 = new Label();
             textBox3 = new TextBox();
             lb_address3 = new Label();
@@ -77,6 +81,7 @@
             lb_name3 = new Label();
             pictureBox3 = new PictureBox();
             panel2 = new Panel();
+            button2 = new Button();
             lb_id2 = new Label();
             textBox2 = new TextBox();
             lb_address2 = new Label();
@@ -84,6 +89,7 @@
             lb_name2 = new Label();
             pictureBox2 = new PictureBox();
             panel1 = new Panel();
+            button1 = new Button();
             lb_id1 = new Label();
             textBox1 = new TextBox();
             lb_address1 = new Label();
@@ -119,10 +125,10 @@
             tabPage2.Controls.Add(pb_avatar);
             tabPage2.Controls.Add(panel10);
             tabPage2.Controls.Add(bt_addPicture);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1033, 648);
+            tabPage2.Size = new Size(1033, 653);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Add user";
             tabPage2.UseVisualStyleBackColor = true;
@@ -155,7 +161,7 @@
             panel10.Dock = DockStyle.Right;
             panel10.Location = new Point(409, 3);
             panel10.Name = "panel10";
-            panel10.Size = new Size(621, 642);
+            panel10.Size = new Size(621, 647);
             panel10.TabIndex = 12;
             // 
             // tb_description
@@ -247,7 +253,6 @@
             label3.Size = new Size(94, 20);
             label3.TabIndex = 7;
             label3.Text = "Department";
-            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -331,6 +336,7 @@
             // panel6
             // 
             panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(button6);
             panel6.Controls.Add(lb_id6);
             panel6.Controls.Add(textBox6);
             panel6.Controls.Add(lb_address6);
@@ -342,6 +348,18 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(292, 246);
             panel6.TabIndex = 5;
+            // 
+            // button6
+            // 
+            button6.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button6.ForeColor = SystemColors.ActiveCaptionText;
+            button6.Location = new Point(203, 203);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 33);
+            button6.TabIndex = 10;
+            button6.Text = "Delete";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // lb_id6
             // 
@@ -410,6 +428,7 @@
             // panel5
             // 
             panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(button5);
             panel5.Controls.Add(lb_id5);
             panel5.Controls.Add(textBox5);
             panel5.Controls.Add(lb_address5);
@@ -421,6 +440,18 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(292, 246);
             panel5.TabIndex = 5;
+            // 
+            // button5
+            // 
+            button5.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(201, 203);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 33);
+            button5.TabIndex = 10;
+            button5.Text = "Delete";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // lb_id5
             // 
@@ -489,6 +520,7 @@
             // panel4
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(button4);
             panel4.Controls.Add(lb_id4);
             panel4.Controls.Add(textBox4);
             panel4.Controls.Add(lb_address4);
@@ -500,6 +532,18 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(292, 246);
             panel4.TabIndex = 5;
+            // 
+            // button4
+            // 
+            button4.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button4.ForeColor = SystemColors.ActiveCaptionText;
+            button4.Location = new Point(206, 203);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 33);
+            button4.TabIndex = 9;
+            button4.Text = "Delete";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // lb_id4
             // 
@@ -568,6 +612,7 @@
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(button3);
             panel3.Controls.Add(lb_id3);
             panel3.Controls.Add(textBox3);
             panel3.Controls.Add(lb_address3);
@@ -579,6 +624,19 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(292, 246);
             panel3.TabIndex = 5;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Transparent;
+            button3.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = SystemColors.ActiveCaptionText;
+            button3.Location = new Point(203, 202);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 33);
+            button3.TabIndex = 8;
+            button3.Text = "Delete";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // lb_id3
             // 
@@ -647,6 +705,7 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(button2);
             panel2.Controls.Add(lb_id2);
             panel2.Controls.Add(textBox2);
             panel2.Controls.Add(lb_address2);
@@ -658,6 +717,19 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(292, 246);
             panel2.TabIndex = 1;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button2.ForeColor = SystemColors.ActiveCaptionText;
+            button2.Location = new Point(201, 201);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 33);
+            button2.TabIndex = 7;
+            button2.Text = "Delete";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // lb_id2
             // 
@@ -726,6 +798,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(lb_id1);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(lb_address1);
@@ -737,6 +810,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(292, 246);
             panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(206, 202);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 33);
+            button1.TabIndex = 6;
+            button1.Text = "Delete";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // lb_id1
             // 
@@ -916,5 +1002,11 @@
         private Label lb_id2;
         private Label lb_id1;
         private Label lb_count_page;
+        private Button button6;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Button button1;
     }
 }

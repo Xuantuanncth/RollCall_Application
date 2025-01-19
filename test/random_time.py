@@ -40,12 +40,24 @@ def generate_message():
 
 def send_serial_data():
     ser = serial.Serial('COM2', 9600)
+    time_out = 0;
     try:
         while True:
             message = generate_message()
             ser.write(message.encode('utf-8'))
             print(f"Sent: {message}")
+             # Read data from the serial port
+            while True:
+                if ser.in_waiting > 0:  # Check if data is available to read
+                    received = ser.readline().decode('utf-8').strip()  # Read and decode the data
+                    print(f"Received: {received}")
+                if(time_out == 2000):
+                    break
+                else:
+                    time_out += 1
+                 
             time.sleep(2)
+            time_out = 0
     except KeyboardInterrupt:
         ser.close()
 
